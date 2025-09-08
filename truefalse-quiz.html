@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>True or False — Tigrinya</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .statement { font-size: 24px; text-align:center; }
+    .quiz-card, .result-card { border-radius: 16px; }
+    .icon-feedback { font-size: 38px; line-height: 1; transition: transform .25s ease, opacity .25s ease; opacity: 0; transform: scale(.7); }
+    .icon-show { opacity: 1; transform: scale(1); }
+    .icon-correct { color: #22c55e; }
+    .icon-wrong { color: #ef4444; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary"><div class="container"><a class="navbar-brand" href="index.html">መስመር ትግርኛ</a></div></nav>
+  <main class="py-5" style="background: var(--surface);">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-7">
+          <div class="card quiz-card shadow border-0" id="quizCard">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <h1 class="h4 m-0" style="font-family:'Playfair Display', Georgia, serif;">True or False</h1>
+                <span class="badge text-bg-primary">Question <span id="qIndex">1</span>/<span id="qTotal">5</span></span>
+              </div>
+              <div class="statement mb-3" id="stmt">"ቤት means house"</div>
+              <div id="answers" class="d-grid gap-2">
+                <button class="btn btn-outline-primary" data-val="true">True</button>
+                <button class="btn btn-outline-primary" data-val="false">False</button>
+              </div>
+              <div class="text-center mt-3" aria-live="polite">
+                <span id="iconCorrect" class="icon-feedback icon-correct">✔</span>
+                <span id="iconWrong" class="icon-feedback icon-wrong">✘</span>
+              </div>
+            </div>
+          </div>
+          <div id="result" class="card result-card shadow border-0 mt-4 d-none">
+            <div class="card-body text-center">
+              <h2 class="h4">Great job!</h2>
+              <p id="scoreLine" class="mb-3">You got 0 out of 0 correct.</p>
+              <a href="quizzes.html" class="btn btn-primary">Back to Quizzes</a>
+              <button id="restartBtn" class="btn btn-outline-primary ms-2">Play Again</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><div class="footer-top"></div><div class="footer-links"><a href="#">Contact Us</a><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div></div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script>
+    const data = [
+      { meta:{ stmt:'"ቤት means house"' }, correct:'true', choices:['true','false'] },
+      { meta:{ stmt:'"መኪና means lion"' }, correct:'false', choices:['true','false'] },
+      { meta:{ stmt:'"ኣንበሳ means lion"' }, correct:'true', choices:['true','false'] },
+      { meta:{ stmt:'"በርበረ is apple"' }, correct:'true', choices:['true','false'] },
+      { meta:{ stmt:'"ሰማያዊ is green"' }, correct:'false', choices:['true','false'] },
+    ];
+
+    const qIndexEl=document.getElementById('qIndex');
+    const qTotalEl=document.getElementById('qTotal');
+    const stmtEl=document.getElementById('stmt');
+    const answersEl=document.getElementById('answers');
+    const iconCorrect=document.getElementById('iconCorrect');
+    const iconWrong=document.getElementById('iconWrong');
+    const quizCard=document.getElementById('quizCard');
+    const resultCard=document.getElementById('result');
+    const scoreLine=document.getElementById('scoreLine');
+    const restartBtn=document.getElementById('restartBtn');
+
+    qTotalEl.textContent=data.length;
+
+    const app=quizApp({
+      questions:data,
+      hooks:{
+        setHeader:(idx)=>{qIndexEl.textContent=idx;},
+        renderPrompt:(q)=>{stmtEl.textContent=q.meta.stmt; iconCorrect.classList.remove('icon-show'); iconWrong.classList.remove('icon-show');},
+        renderChoices:(q,onPick)=>{
+          answersEl.querySelectorAll('button').forEach(b=>b.remove());
+          ['true','false'].forEach(val=>{
+            const btn=document.createElement('button');
+            btn.className='btn btn-outline-primary';
+            btn.textContent=val.charAt(0).toUpperCase()+val.slice(1);
+            btn.addEventListener('click',()=>onPick(val));
+            answersEl.appendChild(btn);
+          });
+        },
+        feedback:(ok)=>{(ok?iconCorrect:iconWrong).classList.add('icon-show');},
+        finish:(score,total)=>{quizCard.classList.add('d-none');resultCard.classList.remove('d-none');scoreLine.textContent=`You got ${score} out of ${total} correct.`;}
+      }
+    });
+
+    restartBtn.addEventListener('click',()=>{quizCard.classList.remove('d-none');resultCard.classList.add('d-none');app.restart();});
+  </script>
+</body>
+</html>
