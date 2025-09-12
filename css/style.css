@@ -529,6 +529,12 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(0.95);
 }
 
+.tile.dragging {
+  opacity: 0.5;
+  transform: rotate(5deg);
+  z-index: 1000;
+}
+
 .drop {
   min-height: 80px;
   border: 3px dashed var(--brand);
@@ -545,6 +551,12 @@ h1, h2, h3, h4, h5, h6 {
 .drop:hover {
   background: rgba(255, 255, 255, 0.8);
   border-color: var(--brand-secondary);
+}
+
+.drop.drag-over {
+  background: rgba(78, 205, 196, 0.2);
+  border-color: var(--brand-secondary);
+  border-style: solid;
 }
 
 .bank {

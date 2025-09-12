@@ -7,7 +7,8 @@ function createMemoryGame(config) {
   const {
     pairs,
     containerId,
-    onComplete
+    onComplete,
+    onMatch
   } = config;
 
   let tiles = [];
@@ -110,6 +111,11 @@ function createMemoryGame(config) {
       first.el.classList.add('matched');
       second.el.classList.add('matched');
       matches++;
+      
+      // Call onMatch callback if provided
+      if (onMatch) {
+        onMatch(matches, pairs.length);
+      }
       
       // Show success feedback
       showFeedback(true);

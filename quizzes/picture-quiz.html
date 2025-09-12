@@ -56,9 +56,10 @@
             <div class="card-body p-4">
               <!-- Header -->
               <div class="d-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 m-0 quiz-title">🖼️ Picture Word Match</h1>
-                <div class="quiz-meta">
-                  <span class="badge bg-primary fs-6">Question <span id="qIndex">1</span>/<span id="qTotal">5</span></span>
+                <h1 class="h3 m-0 quiz-title">🖼️ ስእልን ቃላን ኣዛምድ</h1>
+                <div class="quiz-meta d-flex align-items-center gap-2">
+                  <button id="soundToggle" class="btn btn-outline-secondary btn-sm" title="Toggle Sounds">🔊</button>
+                  <span class="badge bg-primary fs-6">ሕቶታት <span id="qIndex">1</span>/<span id="qTotal">5</span></span>
                 </div>
               </div>
 
@@ -70,7 +71,7 @@
               <!-- Question Area -->
               <div class="quiz-content">
                 <div id="questionArea" class="text-center py-3">
-                  <p class="fs-5 mb-3">What is this in Tigrinya? 🤔</p>
+                  <p class="fs-5 mb-3">እዚ ብትግርኛ እንታይ ይበሃል፧ 🤔</p>
                   <div class="pic-box mb-4" id="picBox">🍎</div>
                 </div>
                 <div id="answers" class="d-grid gap-3 mt-4"></div>
@@ -116,11 +117,27 @@
   <script>
     // Quiz data
     const questions = [
-      { meta: { emoji: '🍎' }, correct: 'በርበረ', choices: ['ቤት','በርበረ','ኣንበሳ','መኪና'] },
+      { meta: { emoji: '🍎' }, correct: 'ቱፋሕ', choices: ['ቤት','ቱፋሕ','ኣንበሳ','መኪና'] },
       { meta: { emoji: '🏠' }, correct: 'ቤት', choices: ['መኪና','ቤት','ኣንበሳ','መርሓ'] },
       { meta: { emoji: '🚗' }, correct: 'መኪና', choices: ['ሓሳብ','መኪና','በርበረ','ኣንበሳ'] },
       { meta: { emoji: '🦁' }, correct: 'ኣንበሳ', choices: ['ኣንበሳ','ቤት','መኪና','ሰማያዊ'] },
-      { meta: { emoji: '📚' }, correct: 'መጽሓፍ', choices: ['መጽሓፍ','ቤት','መኪና','ቢጫ'] },
+      { meta: { emoji: '📚' }, correct: 'መጻሕፍቲ', choices: ['መጻሕፍቲ','ቤት','መኪና','ቢጫ'] },
+      { meta: { emoji: '☁️' }, correct: 'ደበና', choices: ['ደበና','ቤት','መኪና','ኣንበሳ'] },
+      { meta: { emoji: '👨' }, correct: 'ኣቦ', choices: ['ኣቦ','ኣደ','ቆልዓ','ዓይኒ'] },
+      { meta: { emoji: '👩' }, correct: 'ኣደ', choices: ['ኣደ','ኣቦ','ቆልዓ','ዓይኒ'] },
+      { meta: { emoji: '👶' }, correct: 'ቆልዓ', choices: ['ቆልዓ','ኣቦ','ኣደ','ዓይኒ'] },
+      { meta: { emoji: '👁️' }, correct: 'ዓይኒ', choices: ['ዓይኒ','ኢድ','እግሪ','ሓንጎል'] },
+      { meta: { emoji: '✋' }, correct: 'ኢድ', choices: ['ኢድ','ዓይኒ','እግሪ','ሓንጎል'] },
+      { meta: { emoji: '🦶' }, correct: 'እግሪ', choices: ['እግሪ','ኢድ','ዓይኒ','ሓንጎል'] },
+      { meta: { emoji: '🧠' }, correct: 'ሓንጎል', choices: ['ሓንጎል','ልቢ','ከናፍር','ኩርምቲ'] },
+      { meta: { emoji: '❤️' }, correct: 'ልቢ', choices: ['ልቢ','ሓንጎል','ከናፍር','ኩርምቲ'] },
+      { meta: { emoji: '👄' }, correct: 'ከናፍር', choices: ['ከናፍር','ልቢ','ኩርምቲ','እዝኒ'] },
+      { meta: { emoji: '🦷' }, correct: 'ኩርምቲ', choices: ['ኩርምቲ','ከናፍር','እዝኒ','ኣፍንጫ'] },
+      { meta: { emoji: '👂' }, correct: 'እዝኒ', choices: ['እዝኒ','ኩርምቲ','ኣፍንጫ','ጸጉሪ'] },
+      { meta: { emoji: '👃' }, correct: 'ኣፍንጫ', choices: ['ኣፍንጫ','እዝኒ','ጸጉሪ','ዓጽሚ'] },
+      { meta: { emoji: '💇' }, correct: 'ጸጉሪ', choices: ['ጸጉሪ','ኣፍንጫ','ዓጽሚ','ደም'] },
+      { meta: { emoji: '🦴' }, correct: 'ዓጽሚ', choices: ['ዓጽሚ','ጸጉሪ','ደም','ቤት'] },
+      { meta: { emoji: '🩸' }, correct: 'ደም', choices: ['ደም','ዓጽሚ','ቤት','መኪና'] },
     ];
 
     // DOM elements
@@ -136,6 +153,13 @@
 
     // Set the total number of questions dynamically
     qTotalEl.textContent = questions.length;
+
+    // Debug sound manager
+    console.log('Sound manager available:', !!window.soundManager);
+    if (window.soundManager) {
+      console.log('Sound manager config:', window.soundManager.config);
+      console.log('Sounds enabled:', window.soundManager.config.enabled);
+    }
 
     // Initialize quiz
     let appInstance = quizApp({

@@ -52,9 +52,10 @@
             <div class="card-body p-4">
               <!-- Header -->
               <div class="d-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 m-0 quiz-title">✏️ Fill in the Missing Letter</h1>
-                <div class="quiz-meta">
-                  <span class="badge bg-primary fs-6">Question <span id="qIndex">1</span>/<span id="qTotal">5</span></span>
+                <h1 class="h3 m-0 quiz-title">✏️ ዝጎደለት ፊደል መልእ</h1>
+                <div class="quiz-meta d-flex align-items-center gap-2">
+                  <button id="soundToggle" class="btn btn-outline-secondary btn-sm" title="Toggle Sounds">🔊</button>
+                  <span class="badge bg-primary fs-6">ሕቶታት <span id="qIndex">1</span>/<span id="qTotal">5</span></span>
                 </div>
               </div>
 
@@ -66,7 +67,7 @@
               <!-- Question Area -->
               <div class="quiz-content">
                 <div id="questionArea" class="text-center py-3">
-                  <p class="fs-5 mb-3">What letter is missing? 🤔</p>
+                  <p class="fs-5 mb-3">ኣየነይቲ ፊደል እያ ጎዲላ፧ 🤔</p>
                   <div class="word-box" id="wordBox">ቤ_ት</div>
                 </div>
                 <div id="answers" class="d-grid gap-3 mt-4"></div>
@@ -112,11 +113,35 @@
   <script>
     // Quiz data
     const questions = [
-      { meta: { word: 'ቤ_ት', missing: 'ት' }, correct: 'ት', choices: ['ት','ቤ','ሰ','ማ'] },
-      { meta: { word: 'መ_ኪና', missing: 'ኪ' }, correct: 'ኪ', choices: ['ኪ','መ','ና','ሰ'] },
-      { meta: { word: 'ኣ_ቦ', missing: 'ቦ' }, correct: 'ቦ', choices: ['ቦ','ኣ','ሰ','ማ'] },
-      { meta: { word: 'ሰ_ማይ', missing: 'ማ' }, correct: 'ማ', choices: ['ማ','ሰ','ይ','ቤ'] },
-      { meta: { word: 'ኣን_ሳ', missing: 'በ' }, correct: 'በ', choices: ['በ','ኣ','ን','ሳ'] },
+      { meta: { word: 'ም_ፋእ', missing: 'ድ' }, correct: 'ድ', choices: ['ድ','ም','ፋ','እ'] },
+      { meta: { word: 'ምስ_ብ', missing: 'ሓ' }, correct: 'ሓ', choices: ['ሓ','ም','ስ','ብ'] },
+      { meta: { word: 'ም_ፋት', missing: 'ኽ' }, correct: 'ኽ', choices: ['ኽ','ም','ፋ','ት'] },
+      { meta: { word: 'ምዕ_ው', missing: 'ጻ' }, correct: 'ጻ', choices: ['ጻ','ም','ዕ','ው'] },
+      { meta: { word: 'ም_ብ', missing: 'ሃ' }, correct: 'ሃ', choices: ['ሃ','ም','ብ','ሰ'] },
+      { meta: { word: 'ምው_ድ', missing: 'ሳ' }, correct: 'ሳ', choices: ['ሳ','ም','ው','ድ'] },
+      { meta: { word: 'ምዕ_ግ', missing: 'ዳ' }, correct: 'ዳ', choices: ['ዳ','ም','ዕ','ግ'] },
+      { meta: { word: 'ም_ጥ', missing: 'ሻ' }, correct: 'ሻ', choices: ['ሻ','ም','ጥ','ሰ'] },
+      { meta: { word: 'ምሕ_ት', missing: 'ታ' }, correct: 'ታ', choices: ['ታ','ም','ሕ','ት'] },
+      { meta: { word: 'ምሕ_ዝ', missing: 'ጋ' }, correct: 'ጋ', choices: ['ጋ','ም','ሕ','ዝ'] },
+      { meta: { word: 'ምድር_ይ', missing: 'ባ' }, correct: 'ባ', choices: ['ባ','ም','ድ','ር','ይ'] },
+      { meta: { word: 'ም_ዝ', missing: 'ሓ' }, correct: 'ሓ', choices: ['ሓ','ም','ዝ','ሰ'] },
+      { meta: { word: 'ምብ_ዕ', missing: 'ላ' }, correct: 'ላ', choices: ['ላ','ም','ብ','ዕ'] },
+      { meta: { word: 'ምፍ_ሕ', missing: 'ላ' }, correct: 'ላ', choices: ['ላ','ም','ፍ','ሕ'] },
+      { meta: { word: 'ዕ_ል', missing: 'ድ' }, correct: 'ድ', choices: ['ድ','ዕ','ል','ሰ'] },
+      { meta: { word: 'ክብ_ት', missing: 'ረ' }, correct: 'ረ', choices: ['ረ','ክ','ብ','ት'] },
+      { meta: { word: 'ትምህ_ቲ', missing: 'ር' }, correct: 'ር', choices: ['ር','ት','ም','ህ','ቲ'] },
+      { meta: { word: 'ቃ_ት', missing: 'ላ' }, correct: 'ላ', choices: ['ላ','ቃ','ት','ሰ'] },
+      { meta: { word: 'ምጽ_ይ', missing: 'ባ' }, correct: 'ባ', choices: ['ባ','ም','ጽ','ይ'] },
+      { meta: { word: 'ምድ_ብ', missing: 'ያ' }, correct: 'ያ', choices: ['ያ','ም','ድ','ብ'] },
+      { meta: { word: 'ም_ድ', missing: 'ኻ' }, correct: 'ኻ', choices: ['ኻ','ም','ድ','ሰ'] },
+      { meta: { word: 'ምህ_ም', missing: 'ዳ' }, correct: 'ዳ', choices: ['ዳ','ም','ህ','ም'] },
+      { meta: { word: 'ም_ዋግ', missing: 'ጽ' }, correct: 'ጽ', choices: ['ጽ','ም','ዋ','ግ'] },
+      { meta: { word: 'ም_ባር', missing: 'ኽ' }, correct: 'ኽ', choices: ['ኽ','ም','ባ','ር'] },
+      { meta: { word: 'ም_ጋን', missing: 'ጽ' }, correct: 'ጽ', choices: ['ጽ','ም','ጋ','ን'] },
+      { meta: { word: 'ም_ሓል', missing: 'ጥ' }, correct: 'ጥ', choices: ['ጥ','ም','ሓ','ል'] },
+      { meta: { word: 'ም_ፋር', missing: 'ን' }, correct: 'ን', choices: ['ን','ም','ፋ','ር'] },
+      { meta: { word: 'ምፍ_ሕ', missing: 'ላ' }, correct: 'ላ', choices: ['ላ','ም','ፍ','ሕ'] },
+      { meta: { word: 'ምስ_ይ', missing: 'ታ' }, correct: 'ታ', choices: ['ታ','ም','ስ','ይ'] },
     ];
 
     // DOM elements

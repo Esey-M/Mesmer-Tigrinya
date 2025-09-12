@@ -41,20 +41,20 @@ function createDragDropQuiz(config) {
     drop.innerHTML = '';
     bank.innerHTML = '';
     
-    // Create letter tiles
+    // Create letter tiles - shuffle the correct letters to make it challenging
     const letters = [...question.tiles];
-    // Add extra letters to make it more challenging
-    while (letters.join('').length < question.word.length) {
-      letters.push(letters[0]);
-    }
     
-    // Shuffle and create tiles
-    letters.sort(() => Math.random() - 0.5).forEach(letter => {
+    // Shuffle the letters so they're not in the correct order
+    letters.sort(() => Math.random() - 0.5);
+    
+    // Create tiles from shuffled letters
+    letters.forEach(letter => {
       const tile = document.createElement('div');
       tile.className = 'tile';
       tile.draggable = true;
       tile.textContent = letter;
       tile.addEventListener('dragstart', handleDragStart);
+      tile.addEventListener('dragend', handleDragEnd);
       bank.appendChild(tile);
     });
 
@@ -65,41 +65,81 @@ function createDragDropQuiz(config) {
   // Handle drag start
   function handleDragStart(e) {
     e.dataTransfer.setData('text/plain', e.target.textContent);
+    e.dataTransfer.setData('source', e.target.parentElement.id);
     e.dataTransfer.effectAllowed = 'move';
     e.target.style.opacity = '0.5';
+    e.target.classList.add('dragging');
   }
 
   // Handle drag end
   function handleDragEnd(e) {
     e.target.style.opacity = '1';
+    e.target.classList.remove('dragging');
   }
 
   // Handle drag over
   function handleDragOver(e) {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
+    e.target.closest('.drop, .bank').classList.add('drag-over');
+  }
+
+  // Handle drag leave
+  function handleDragLeave(e) {
+    if (!e.target.closest('.drop, .bank').contains(e.relatedTarget)) {
+      e.target.closest('.drop, .bank').classList.remove('drag-over');
+    }
   }
 
   // Handle drop
   function handleDrop(e) {
     e.preventDefault();
     const letter = e.dataTransfer.getData('text/plain');
+    const sourceId = e.dataTransfer.getData('source');
+    const targetId = e.target.closest('.drop, .bank').id;
     
-    // Create new tile in drop zone
-    const tile = document.createElement('div');
-    tile.className = 'tile';
-    tile.textContent = letter;
-    tile.draggable = true;
-    tile.addEventListener('dragstart', handleDragStart);
-    tile.addEventListener('dragend', handleDragEnd);
-    drop.appendChild(tile);
+    // Remove drag-over class
+    e.target.closest('.drop, .bank').classList.remove('drag-over');
     
-    // Remove from bank
-    const bankTiles = Array.from(bank.children);
-    const sourceTile = bankTiles.find(t => t.textContent === letter && t.style.opacity === '0.5');
-    if (sourceTile) {
-      sourceTile.remove();
+    // Find the dragged element
+    const draggedElement = document.querySelector('.dragging');
+    if (!draggedElement) return;
+    
+    // If dropping in the same container, allow reordering
+    if (sourceId === targetId) {
+      const afterElement = getDragAfterElement(e.target.closest('.drop, .bank'), e.clientY);
+      if (afterElement == null) {
+        e.target.closest('.drop, .bank').appendChild(draggedElement);
+      } else {
+        e.target.closest('.drop, .bank').insertBefore(draggedElement, afterElement);
+      }
+      return;
     }
+    
+    // Moving between containers
+    if (sourceId === 'bank' && targetId === 'drop') {
+      // Moving from bank to drop zone
+      drop.appendChild(draggedElement);
+    } else if (sourceId === 'drop' && targetId === 'bank') {
+      // Moving from drop zone back to bank
+      bank.appendChild(draggedElement);
+    }
+  }
+
+  // Helper function to determine where to insert dragged element
+  function getDragAfterElement(container, y) {
+    const draggableElements = [...container.querySelectorAll('.tile:not(.dragging)')];
+    
+    return draggableElements.reduce((closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child };
+      } else {
+        return closest;
+      }
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
   }
 
   // Check answer
@@ -199,6 +239,10 @@ function createDragDropQuiz(config) {
   // Set up event listeners
   drop.addEventListener('dragover', handleDragOver);
   drop.addEventListener('drop', handleDrop);
+  drop.addEventListener('dragleave', handleDragLeave);
+  bank.addEventListener('dragover', handleDragOver);
+  bank.addEventListener('drop', handleDrop);
+  bank.addEventListener('dragleave', handleDragLeave);
   checkBtn.addEventListener('click', checkAnswer);
   restartBtn.addEventListener('click', restart);
 

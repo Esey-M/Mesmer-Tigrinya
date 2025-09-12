@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drag & Drop Letters — Mesmer Tigrinya</title>
+  <title>ስሒብካ ኣመዓራሪ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
@@ -39,9 +39,10 @@
             <div class="card-body p-4">
               <!-- Header -->
               <div class="d-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 m-0 quiz-title">🧩 Drag & Drop Letters</h1>
-                <div class="quiz-meta">
-                  <span class="badge bg-primary fs-6">Question <span id="qIndex">1</span>/<span id="qTotal">5</span></span>
+                <h1 class="h3 m-0 quiz-title">🧩 ፊደላት ስሒብካ ቃላት ስራሕ </h1>
+                <div class="quiz-meta d-flex align-items-center gap-2">
+                  <button id="soundToggle" class="btn btn-outline-secondary btn-sm" title="Toggle Sounds">🔊</button>
+                  <span class="badge bg-primary fs-6">ሕቶታት  <span id="qIndex">1</span>/<span id="qTotal">5</span></span>
                 </div>
               </div>
 
@@ -53,18 +54,18 @@
               <!-- Question Area -->
               <div class="quiz-content">
                 <div class="text-center mb-4">
-                  <p class="fs-5 mb-3">Build the word: 🏗️</p>
+                  <p class="fs-5 mb-3">ነዛ ቃል ንምጽሓፍ ነዞም ኣብ ታሕቲ ዘለዉ ፊደላት፡ ስሒብካ ኣብዚ ርቡዕ ኩርናዕ ስርዓዮም 🏗️</p>
                   <h2 id="targetWord" class="display-6 text-primary mb-4"></h2>
                 </div>
                 
                 <div class="drop mb-4" id="drop">
-                  <p class="text-muted text-center mb-0">Drop letters here</p>
+                  <p class="text-muted text-center mb-0">ፊደላት ኣብዚ ስራዕ</p>
                 </div>
                 
                 <div class="bank mb-4" id="bank"></div>
                 
                 <div class="text-center">
-                  <button class="btn btn-primary btn-lg" id="checkBtn">✅ Check Answer</button>
+                  <button class="btn btn-primary btn-lg" id="checkBtn">✅ መልሲ መርምር</button>
                 </div>
               </div>
 
@@ -114,6 +115,28 @@
       { word: 'ኣቦ', tiles: ['ቦ','ኣ'] },
       { word: 'ሰማይ', tiles: ['ማ','ሰ','ይ'] },
       { word: 'ኣንበሳ', tiles: ['ሳ','ኣ','በ','ን'] },
+      { word: 'ምድፋእ', tiles: ['ም','ድ','ፋ','እ'] },
+      { word: 'ምስሓብ', tiles: ['ም','ስ','ሓ','ብ'] },
+      { word: 'ምኽፋት', tiles: ['ም','ኽ','ፋ','ት'] },
+      { word: 'ምዕጻው', tiles: ['ም','ዕ','ጻ','ው'] },
+      { word: 'ምሃብ', tiles: ['ም','ሃ','ብ'] },
+      { word: 'ምውሳድ', tiles: ['ም','ው','ሳ','ድ'] },
+      { word: 'ምዕዳግ', tiles: ['ም','ዕ','ዳ','ግ'] },
+      { word: 'ምሻጥ', tiles: ['ም','ሻ','ጥ'] },
+      { word: 'ምሕታት', tiles: ['ም','ሕ','ታ','ት'] },
+      { word: 'ምሕጋዝ', tiles: ['ም','ሕ','ጋ','ዝ'] },
+      { word: 'ምድርባይ', tiles: ['ም','ድ','ር','ባ','ይ'] },
+      { word: 'ምሓዝ', tiles: ['ም','ሓ','ዝ'] },
+      { word: 'ምብላዕ', tiles: ['ም','ብ','ላ','ዕ'] },
+      { word: 'ምፍላሕ', tiles: ['ም','ፍ','ላ','ሕ'] },
+      { word: 'ዕድል', tiles: ['ዕ','ድ','ል'] },
+      { word: 'ክብረት', tiles: ['ክ','ብ','ረ','ት'] },
+      { word: 'ትምህርቲ', tiles: ['ት','ም','ህ','ር','ቲ'] },
+      { word: 'ቃላት', tiles: ['ቃ','ላ','ት'] },
+      { word: 'ምጽባይ', tiles: ['ም','ጽ','ባ','ይ'] },
+      { word: 'ምድያብ', tiles: ['ም','ድ','ያ','ብ'] },
+      { word: 'ምኻድ', tiles: ['ም','ኻ','ድ'] },
+      { word: 'ምህዳም', tiles: ['ም','ህ','ዳ','ም'] },
     ];
 
     // Set the total number of questions dynamically

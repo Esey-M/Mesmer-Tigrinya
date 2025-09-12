@@ -39,15 +39,21 @@
             <div class="card-body p-4">
               <!-- Header -->
               <div class="d-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 m-0 quiz-title">🧠 Memory Game</h1>
-                <div class="quiz-meta">
-                  <span class="badge bg-primary fs-6">Match word ↔ picture</span>
+                <h1 class="h3 m-0 quiz-title">🧠 ጸወታ ምዝካር</h1>
+                <div class="quiz-meta d-flex align-items-center gap-2">
+                  <button id="soundToggle" class="btn btn-outline-secondary btn-sm" title="Toggle Sounds">🔊</button>
+                  <span class="badge bg-primary fs-6">ሕቶታት <span id="qIndex">1</span>/<span id="qTotal">5</span></span>
                 </div>
+              </div>
+
+              <!-- Progress Bar -->
+              <div class="progress mb-4" style="height: 8px; border-radius: 10px;">
+                <div class="progress-bar quiz-progress" role="progressbar" style="width: 0%; background: linear-gradient(90deg, #ff6b6b, #4ecdc4);"></div>
               </div>
 
               <!-- Instructions -->
               <div class="text-center mb-4">
-                <p class="fs-5 text-muted">Find matching pairs! 🎯</p>
+                <p class="fs-5 text-muted">ቃልን ስእልን ኣዛምድ! 🎯</p>
               </div>
 
               <!-- Game Grid -->
@@ -97,16 +103,48 @@
       { word: 'ቤት', pic: '🏠' },
       { word: 'መኪና', pic: '🚗' },
       { word: 'ኣንበሳ', pic: '🦁' },
-      { word: 'በርበረ', pic: '🍎' },
+      { word: 'ቱፋሕ', pic: '🍎' },
       { word: 'መጽሓፍ', pic: '📚' },
+      { word: 'ደበና', pic: '☁️' },
+      { word: 'ኣቦ', pic: '👨' },
+      { word: 'ኣደ', pic: '👩' },
+      { word: 'ቆልዓ', pic: '👶' },
+      { word: 'ዓይኒ', pic: '👁️' },
+      { word: 'ኢድ', pic: '✋' },
+      { word: 'እግሪ', pic: '🦶' },
+      { word: 'ሓንጎል', pic: '🧠' },
+      { word: 'ልቢ', pic: '❤️' },
+      { word: 'ከናፍር', pic: '👄' },
+      { word: 'ኩርምቲ', pic: '🦷' },
+      { word: 'እዝኒ', pic: '👂' },
+      { word: 'ኣፍንጫ', pic: '👃' },
+      { word: 'ጸጉሪ', pic: '💇' },
+      { word: 'ዓጽሚ', pic: '🦴' },
+      { word: 'ደም', pic: '🩸' },
     ];
+
+    // DOM elements for question counting
+    const qIndexEl = document.getElementById('qIndex');
+    const qTotalEl = document.getElementById('qTotal');
+    const progressBar = document.querySelector('.progress-bar');
+
+    // Set the total number of questions dynamically
+    qTotalEl.textContent = pairs.length;
 
     // Initialize memory game
     let gameInstance = createMemoryGame({
       pairs,
       containerId: 'gameCard',
+      onMatch: (matches, total) => {
+        // Update question index and progress
+        qIndexEl.textContent = matches;
+        const progress = (matches / total) * 100;
+        progressBar.style.width = `${progress}%`;
+      },
       onComplete: (matches, total) => {
         console.log(`Game completed! Matches: ${matches}/${total}`);
+        // Ensure progress bar is at 100% when complete
+        progressBar.style.width = '100%';
       }
     });
   </script>
