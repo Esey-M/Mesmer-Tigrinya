@@ -52,7 +52,7 @@
             <div class="card-body p-4">
               <!-- Header -->
               <div class="d-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 m-0 quiz-title">✅ True or False</h1>
+                <h1 class="h3 m-0 quiz-title">✅ ሓቂ ወይ ሓሶት</h1>
                 <div class="quiz-meta d-flex align-items-center gap-2">
                   <button id="soundToggle" class="btn btn-outline-secondary btn-sm" title="Toggle Sounds">🔊</button>
                   <span class="badge bg-primary fs-6">Question <span id="qIndex">1</span>/<span id="qTotal">5</span></span>
@@ -70,8 +70,8 @@
                   <div class="statement" id="stmt">"ቤት means house"</div>
                 </div>
                 <div id="answers" class="d-grid gap-3 mt-4">
-                  <button class="btn btn-outline-success answer-btn" data-val="true">✅ True</button>
-                  <button class="btn btn-outline-danger answer-btn" data-val="false">❌ False</button>
+                  <button class="btn btn-outline-success answer-btn" data-val="true">✅ ሓቂ</button>
+                  <button class="btn btn-outline-danger answer-btn" data-val="false">❌ ሓሶት</button>
                 </div>
               </div>
 
@@ -84,12 +84,12 @@
           <div id="result" class="card shadow result-card border-0 mt-4 d-none">
             <div class="card-body text-center p-5">
               <div class="result-icon mb-3">🏆</div>
-              <h2 class="h3 mb-3 result-title">Amazing Work!</h2>
-              <p class="result-score mb-3" id="scoreLine">You got 0 out of 0 correct!</p>
-              <p class="result-time mb-4" id="timeLine">Time taken: 0 minutes</p>
+              <h2 class="h3 mb-3 result-title">ጽቡቕ ስራሕ!</h2>
+              <p class="result-score mb-3" id="scoreLine">0 ካብ 0 ቅኑዕ መሊስካ/ኪ!</p>
+              <p class="result-time mb-4" id="timeLine">ንውሓት ግዜ: 0 ደቓይቅ</p>
               <div class="result-actions">
-                <a href="../quizzes.html" class="btn btn-primary btn-lg me-2">🎮 Back to Quizzes</a>
-                <button id="restartBtn" class="btn btn-outline-primary btn-lg">🔄 Play Again</button>
+                <a href="../quizzes.html" class="btn btn-primary btn-lg me-2">🎮 ናብ መዝገብ ምዝንጋዕ</a>
+                <button id="restartBtn" class="btn btn-outline-primary btn-lg">🔄 እንደገና ተጻወት</button>
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@
       { meta: { stmt: '"ቤት means house"' }, correct: 'true', choices: ['true','false'] },
       { meta: { stmt: '"መኪና means lion"' }, correct: 'false', choices: ['true','false'] },
       { meta: { stmt: '"ኣንበሳ means lion"' }, correct: 'true', choices: ['true','false'] },
-      { meta: { stmt: '"በርበረ is apple"' }, correct: 'true', choices: ['true','false'] },
+      { meta: { stmt: '"ቱፋሕ is apple"' }, correct: 'true', choices: ['true','false'] },
       { meta: { stmt: '"ሰማያዊ is green"' }, correct: 'false', choices: ['true','false'] },
     ];
 
@@ -153,14 +153,14 @@
           // Create True button
           const trueBtn = document.createElement('button');
           trueBtn.className = 'btn btn-outline-success answer-btn';
-          trueBtn.textContent = '✅ True';
+          trueBtn.textContent = '✅ ሓቂ';
           trueBtn.addEventListener('click', () => onPick('true'));
           answersEl.appendChild(trueBtn);
           
           // Create False button
           const falseBtn = document.createElement('button');
           falseBtn.className = 'btn btn-outline-danger answer-btn';
-          falseBtn.textContent = '❌ False';
+          falseBtn.textContent = '❌ ሓሶት';
           falseBtn.addEventListener('click', () => onPick('false'));
           answersEl.appendChild(falseBtn);
         },
@@ -169,13 +169,13 @@
           resultCard.classList.remove('d-none');
           
           // Update score
-          scoreLine.textContent = `You got ${score} out of ${total} correct! (${percentage}%)`;
+          scoreLine.textContent = `${score} ካብ ${total} ቅኑዕ መሊስካ/ኪ! (${percentage}%)`;
           
           // Update time
-          const timeText = timeTaken.minutes > 0 
-            ? `${timeTaken.minutes}m ${timeTaken.seconds}s`
-            : `${timeTaken.seconds}s`;
-          timeLine.textContent = `Time taken: ${timeText}`;
+          const timeText = timeTaken.minutes > 0
+            ? `${timeTaken.minutes}ደቓይቅ ${timeTaken.seconds}ካልኢት/ታት`
+            : `${timeTaken.seconds}ካልኢት/ታት`;
+          timeLine.textContent = `ንውሓት ግዜ: ${timeText}`;
           
           // Add celebration animation
           resultCard.classList.add('celebrate');

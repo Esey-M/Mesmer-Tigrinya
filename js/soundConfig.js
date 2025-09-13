@@ -33,10 +33,10 @@ const SOUND_CONFIG = {
   
   // Fallback messages when audio files are not found
   fallbacks: {
-    correct: '🔊 Correct!',
-    incorrect: '🔊 Try again!',
-    complete: '🔊 Quiz complete!',
-    click: '🔊 Click!',
+    correct: '🔊 ቅኑዕ!',
+    incorrect: '🔊 ደጊምካ ፈትን!',
+    complete: '🔊 ሕቶ ተወዲኡ!',
+    click: '🔊 ጠውቕ!',
     words: '🔊 Tigrinya word'
   }
 };

@@ -179,7 +179,16 @@ function createDragDropQuiz(config) {
 
     const message = document.createElement('div');
     message.className = 'feedback-message';
-    message.textContent = isCorrect ? 'Great job! 🌟' : 'Try again! 💪';
+    
+    // Use Tigrinya messages from quizApp.js
+    const tigrinyaMessages = {
+      correct: ['ጽቡቕ ስራሕ! 🌟', 'ሰናይ! ⭐', 'ምሉእ! 🎉', 'ከምዚ ቀጽል/ሊ! 🏆', 'ደስ ዝብል!'],
+      incorrect: ['ደጊምካ ፈትን! 💪', 'ኣጆኻ! 🚀', 'ትኽእል ኢኻ! 💫', 'ቀሪብካ! 🌟']
+    };
+    
+    const messages = isCorrect ? tigrinyaMessages.correct : tigrinyaMessages.incorrect;
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    message.textContent = randomMessage;
 
     feedbackEl.appendChild(icon);
     feedbackEl.appendChild(message);
@@ -215,8 +224,11 @@ function createDragDropQuiz(config) {
     quizCard.classList.add('d-none');
     resultCard.classList.remove('d-none');
     
-    scoreLine.textContent = `You got ${score} out of ${questions.length} correct!`;
-    timeLine.textContent = `Time taken: ${minutes > 0 ? `${minutes}m ${seconds}s` : `${seconds}s`}`;
+    scoreLine.textContent = `${score} ካብ ${questions.length} ቅኑዕ መሊስካ/ኪ!`;
+    const timeText = minutes > 0 
+      ? `${minutes}ደቓይቅ ${seconds}ካልኢት/ታት`
+      : `${seconds}ካልኢት/ታት`;
+    timeLine.textContent = `ንውሓት ግዜ: ${timeText}`;
     
     resultCard.classList.add('celebrate');
     

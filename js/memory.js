@@ -155,7 +155,16 @@ function createMemoryGame(config) {
 
     const message = document.createElement('div');
     message.className = 'feedback-message';
-    message.textContent = isCorrect ? 'Great match! 🌟' : 'Try again! 💪';
+    
+    // Use Tigrinya messages from quizApp.js
+    const tigrinyaMessages = {
+      correct: ['ጽቡቕ ስራሕ! 🌟', 'ሰናይ! ⭐', 'ምሉእ! 🎉', 'ከምዚ ቀጽል/ሊ! 🏆', 'ደስ ዝብል!'],
+      incorrect: ['ደጊምካ ፈትን! 💪', 'ኣጆኻ! 🚀', 'ትኽእል ኢኻ! 💫', 'ቀሪብካ! 🌟']
+    };
+    
+    const messages = isCorrect ? tigrinyaMessages.correct : tigrinyaMessages.incorrect;
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    message.textContent = randomMessage;
 
     feedbackEl.appendChild(icon);
     feedbackEl.appendChild(message);
@@ -187,8 +196,11 @@ function createMemoryGame(config) {
     gameCard.classList.add('d-none');
     resultCard.classList.remove('d-none');
     
-    scoreLine.textContent = `You matched ${matches} pairs!`;
-    timeLine.textContent = `Time taken: ${minutes > 0 ? `${minutes}m ${seconds}s` : `${seconds}s`}`;
+    scoreLine.textContent = `${matches} ጽምዲ ሰርሕካ/ኪ!`;
+    const timeText = minutes > 0 
+      ? `${minutes}ደቓይቅ ${seconds}ካልኢት/ታት`
+      : `${seconds}ካልኢት/ታት`;
+    timeLine.textContent = `ንውሓት ግዜ: ${timeText}`;
     
     resultCard.classList.add('celebrate');
     

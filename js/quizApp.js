@@ -5,9 +5,9 @@
 
 // Kid-friendly messages and emojis
 const MESSAGES = {
-  correct: ['Great job! 🌟', 'Awesome! ⭐', 'Perfect! 🎉', 'You\'re amazing! 🏆', 'Fantastic! 🌈'],
-  incorrect: ['Try again! 💪', 'Keep going! 🚀', 'You\'ve got this! 💫', 'Almost there! 🌟'],
-  encouragement: ['You\'re doing great!', 'Keep learning!', 'You\'re a star! ⭐', 'Amazing progress!']
+  correct: ['ጽቡቕ ስራሕ! 🌟', 'ሰናይ! ⭐', 'ምሉእ! 🎉', 'ከምዚ ቀጽል/ሊ! 🏆', 'ደስ ዝብል!'],
+  incorrect: ['ደጊምካ ፈትን! 💪', 'ኣጆኻ! 🚀', 'ትኽእል ኢኻ! 💫', 'ቀሪብካ! 🌟'],
+  encouragement: ['ኣዝዩ ዘሐብን!', 'ቀጽሎ!', 'ከኾብ! ⭐', 'ጽቡቅ ኣሳልጦ!']
 };
 
 // Sound effects - Uses SoundManager for better control
