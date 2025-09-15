@@ -3,20 +3,211 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tigrinya Alphabet Quiz — Mesmer Tigrinya</title>
+  <title>ፊደላት ትግርኛ - Tigrinya Alphabet — Mesmer Tigrinya</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    .quiz-letter { 
-      font-size: 5rem; 
-      font-weight: 700; 
-      line-height: 1; 
+    .alphabet-grid {
+      background: linear-gradient(135deg, #ffeef8, #f0f8ff);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    
+    .grid-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .grid-title {
+      font-size: 2rem;
+      font-weight: 700;
       color: var(--brand);
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-      animation: pulse 2s infinite;
+      margin-bottom: 0.5rem;
+    }
+    
+    .grid-subtitle {
+      color: #666;
+      font-size: 1.1rem;
+    }
+    
+    .vowel-headers {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .vowel-header {
+      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+      color: white;
+      padding: 0.8rem 0.5rem;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+    
+    .alphabet-row {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .letter-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem 0.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      border: 2px solid transparent;
+      min-height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .letter-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      border-color: var(--brand-secondary);
+    }
+    
+    .letter-card:active {
+      transform: translateY(-1px);
+    }
+    
+    .letter-card.playing {
+      animation: letterPulse 0.6s ease-in-out;
+      background: linear-gradient(135deg, #4ecdc4, #ff6b6b);
+      color: white;
+    }
+    
+    .tigrinya-char {
+      font-size: 1.8rem;
+      font-weight: 700; 
+      color: var(--brand);
+      margin-bottom: 0.3rem;
+      line-height: 1; 
+    }
+    
+    .pronunciation {
+      font-size: 0.8rem;
+      color: #666;
+      font-weight: 500;
+    }
+    
+    .letter-card.playing .tigrinya-char,
+    .letter-card.playing .pronunciation {
+      color: white;
+    }
+    
+    @keyframes letterPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .group-letter-info {
+      text-align: center;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(255, 107, 107, 0.1));
+      border-radius: 12px;
+      border-left: 4px solid var(--brand-secondary);
+      display: none;
+    }
+    
+    .group-selected-letter {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 0.3rem;
+    }
+    
+    .group-selected-pronunciation {
+      font-size: 1rem;
+      color: #666;
+      font-weight: 600;
+    }
+    
+    .page-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--brand);
+    }
+    
+    .page-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+    
+    .sound-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: white;
+      border: 2px solid var(--brand-secondary);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .sound-toggle:hover {
+      transform: scale(1.1);
+    }
+    
+    .instructions {
+      background: linear-gradient(135deg, #fff3cd, #d1ecf1);
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      border-left: 5px solid #ffc107;
+    }
+    
+    .instructions h4 {
+      color: var(--brand);
+      margin-bottom: 0.5rem;
+    }
+    
+    .instructions p {
+      color: #666;
+      margin: 0;
+    }
+    
+    .alphabet-group {
+      margin-bottom: 2rem;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .group-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 1rem;
+      text-align: center;
+      border-bottom: 3px solid var(--brand-secondary);
+      padding-bottom: 0.5rem;
     }
   </style>
 </head>
@@ -33,62 +224,57 @@
       </button>
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="../index.html">🏠 Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="../quizzes.html">🎮 Quizzes</a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html">ቅድመ ገጽ</a></li>
+          <li class="nav-item"><a class="nav-link" href="../quizzes.html">ትምህርትታት</a></li>
+          <li class="nav-item"><a class="nav-link" href="../contact.html">ኣብ ርክብ ንኺድ</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
+  <!-- Sound Toggle Button -->
+  <button id="soundToggle" class="btn btn-outline-secondary sound-toggle" title="Toggle Sounds">🔊</button>
+
   <main class="py-5" style="background: var(--surface); min-height: calc(100vh - 200px);">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-7">
-          <!-- Quiz Card -->
-          <div class="card shadow quiz-card border-0" id="quizCard">
-            <div class="card-body p-4">
-              <!-- Header -->
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 m-0 quiz-title">🔤 ትግርኛ ፊደላት</h1>
-                <div class="quiz-meta d-flex align-items-center gap-2">
-                  <button id="soundToggle" class="btn btn-outline-secondary btn-sm" title="Toggle Sounds">🔊</button>
-                  <span class="badge bg-primary fs-6">ሕቶ <span id="qIndex">1</span>/<span id="qTotal">5</span></span>
-                </div>
+      <!-- Page Header -->
+      <div class="page-title">
+        <h1 class="display-4 fw-bold">🔤 ፊደላት ትግርኛ</h1>
+        <p class="page-subtitle">ንፊደላት ትግርኛ ተማሃሩ እሞ ንድምጾም ሰምዑ</p>
               </div>
 
-              <!-- Progress Bar -->
-              <div class="progress mb-4" style="height: 8px; border-radius: 10px;">
-                <div class="progress-bar quiz-progress" role="progressbar" style="width: 0%; background: linear-gradient(90deg, #ff6b6b, #4ecdc4);"></div>
+      <!-- Instructions -->
+      <div class="instructions">
+        <h4>🎯 እንታይ ክትገብር ኣሎካ</h4>
+        <p>ንፊደል ኣብ ላዕሊ ጠውቕ እሞ ንድምጹ ሰምዕ! ኣብ ታሕተዋይ ክፋል እቲ ፊደል እተመርጸ ክርአ እዩ።</p>
               </div>
 
-              <!-- Question Area -->
-              <div class="quiz-content">
-                <div id="questionArea" class="text-center py-3">
-                  <div class="quiz-letter" id="letter">ሀ</div>
-                  <p class="mt-3 mb-0 fs-5">እዚ ድምጺ እንታይ እዩ? 🎵</p>
-                </div>
-                <div id="answers" class="d-grid gap-3 mt-4"></div>
-              </div>
 
-              <!-- Feedback Area -->
-              <div class="quiz-feedback text-center mt-4" aria-live="polite"></div>
-            </div>
+      <!-- Alphabet Grid -->
+      <div class="alphabet-grid">
+        <div class="grid-header">
+          <h2 class="grid-title">ፊደላት ትግርኛ - Tigrinya Alphabet</h2>
+          <p class="grid-subtitle">ንፊደላት ተማሃሩ እሞ ንድምጾም ሰምዑ</p>
           </div>
 
-          <!-- Results Card -->
-          <div id="result" class="card shadow result-card border-0 mt-4 d-none">
-            <div class="card-body text-center p-5">
-              <div class="result-icon mb-3">🏆</div>
-              <h2 class="h3 mb-3 result-title">ጽቡቕ ስራሕ!</h2>
-              <p class="result-score mb-3" id="scoreLine">0 ካብ 0 ቅኑዕ መሊስካ/ኪ!</p>
-              <p class="result-time mb-4" id="timeLine">ንውሓት ግዜ: 0 ደቓይቅ</p>
-              <div class="result-actions">
-                <a href="../quizzes.html" class="btn btn-primary btn-lg me-2">🎮 ናብ መዝገብ ምዝንጋዕ</a>
-                <button id="restartBtn" class="btn btn-outline-primary btn-lg">🔄 እንደገና ተጻወት</button>
-              </div>
-            </div>
-          </div>
+        <!-- Vowel Headers -->
+        <div class="vowel-headers">
+          <div class="vowel-header">Base</div>
+          <div class="vowel-header">U</div>
+          <div class="vowel-header">I</div>
+          <div class="vowel-header">A</div>
+          <div class="vowel-header">E</div>
+          <div class="vowel-header">Ih</div>
+          <div class="vowel-header">O</div>
         </div>
+
+        <!-- Alphabet Groups -->
+        <div id="alphabetGroups"></div>
+      </div>
+
+      <!-- Back to Quizzes Button -->
+      <div class="text-center mt-5">
+        <a href="../quizzes.html" class="btn btn-primary btn-lg">🎮 ናብ መዝገብ ምዝንጋዕ</a>
       </div>
     </div>
   </main>
@@ -97,9 +283,19 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-links">
-        <a href="#">Contact Us</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
+        <a href="../contact.html">Contact Us</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms-of-use.html">Terms of Use</a>
+      </div>
+      <div class="footer-social" aria-label="Social media links">
+        <a href="#" aria-label="Facebook"></a>
+        <a href="#" aria-label="Twitter"></a>
+        <a href="#" aria-label="Instagram"></a>
+        <a href="#" aria-label="YouTube">📺</a>
+      </div>
+      <div class="footer-copyright">
+        <p>&copy; 2024 መስመር ትግርኛ. All rights reserved.</p>
+        <p><a href="#" class="youtube-link">📺 Subscribe to our YouTube Channel</a></p>
       </div>
     </div>
   </footer>
@@ -107,78 +303,198 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../js/soundConfig.js"></script>
   <script src="../js/quizApp.js"></script>
-  <script src="../js/quizEnhancements.js"></script>
   <script>
-    // Quiz data
-    const questions = [
-      { correct: 'ha', choices: ['ha','la','ma','na'], meta: { letter: 'ሀ' } },
-      { correct: 'la', choices: ['ra','la','sa','qa'], meta: { letter: 'ለ' } },
-      { correct: 'ma', choices: ['ta','ma','ga','za'], meta: { letter: 'መ' } },
-      { correct: 'sa', choices: ['sa','ka','ba','xa'], meta: { letter: 'ሰ' } },
-      { correct: 'ba', choices: ['pa','ba','da','fa'], meta: { letter: 'በ' } },
+    // Tigrinya alphabet data with all 7 vowel forms
+    const tigrinyaAlphabet = [
+      { base: 'ሀ', forms: ['ሀ', 'ሁ', 'ሂ', 'ሃ', 'ሄ', 'ህ', 'ሆ'], sounds: ['heh', 'hoo', 'hee', 'ha', 'hieh', 'hih', 'ho'] },
+      { base: 'ለ', forms: ['ለ', 'ሉ', 'ሊ', 'ላ', 'ሌ', 'ል', 'ሎ'], sounds: ['leh', 'loo', 'lee', 'la', 'lieh', 'lih', 'lo'] },
+      { base: 'ሐ', forms: ['ሐ', 'ሑ', 'ሒ', 'ሓ', 'ሔ', 'ሕ', 'ሖ'], sounds: ['heh', 'hoo', 'hee', 'ha', 'hieh', 'hih', 'ho'] },
+      { base: 'መ', forms: ['መ', 'ሙ', 'ሚ', 'ማ', 'ሜ', 'ም', 'ሞ'], sounds: ['meh', 'moo', 'mee', 'ma', 'mieh', 'mih', 'mo'] },
+      { base: 'ሠ', forms: ['ሠ', 'ሡ', 'ሢ', 'ሣ', 'ሤ', 'ሥ', 'ሦ'], sounds: ['seh', 'soo', 'see', 'sa', 'sieh', 'sih', 'so'] },
+      { base: 'ረ', forms: ['ረ', 'ሩ', 'ሪ', 'ራ', 'ሬ', 'ር', 'ሮ'], sounds: ['reh', 'roo', 'ree', 'ra', 'rieh', 'rih', 'ro'] },
+      { base: 'ሰ', forms: ['ሰ', 'ሱ', 'ሲ', 'ሳ', 'ሴ', 'ስ', 'ሶ'], sounds: ['seh', 'soo', 'see', 'sa', 'sieh', 'sih', 'so'] },
+      { base: 'ሸ', forms: ['ሸ', 'ሹ', 'ሺ', 'ሻ', 'ሼ', 'ሽ', 'ሾ'], sounds: ['sheh', 'shoo', 'shee', 'sha', 'shieh', 'shih', 'sho'] },
+      { base: 'ቀ', forms: ['ቀ', 'ቁ', 'ቂ', 'ቃ', 'ቄ', 'ቅ', 'ቆ'], sounds: ['qeh', 'qoo', 'qee', 'qa', 'qieh', 'qih', 'qo'] },
+      { base: 'በ', forms: ['በ', 'ቡ', 'ቢ', 'ባ', 'ቤ', 'ብ', 'ቦ'], sounds: ['beh', 'boo', 'bee', 'ba', 'bieh', 'bih', 'bo'] },
+      { base: 'ተ', forms: ['ተ', 'ቱ', 'ቲ', 'ታ', 'ቴ', 'ት', 'ቶ'], sounds: ['teh', 'too', 'tee', 'ta', 'tieh', 'tih', 'to'] },
+      { base: 'ቸ', forms: ['ቸ', 'ቹ', 'ቺ', 'ቻ', 'ቼ', 'ች', 'ቾ'], sounds: ['cheh', 'choo', 'chee', 'cha', 'chieh', 'chih', 'cho'] },
+      { base: 'ኀ', forms: ['ኀ', 'ኁ', 'ኂ', 'ኃ', 'ኄ', 'ኅ', 'ኆ'], sounds: ['heh', 'hoo', 'hee', 'ha', 'hieh', 'hih', 'ho'] },
+      { base: 'ነ', forms: ['ነ', 'ኑ', 'ኒ', 'ና', 'ኔ', 'ን', 'ኖ'], sounds: ['neh', 'noo', 'nee', 'na', 'nieh', 'nih', 'no'] },
+      { base: 'ኘ', forms: ['ኘ', 'ኙ', 'ኚ', 'ኛ', 'ኜ', 'ኝ', 'ኞ'], sounds: ['nyeh', 'nyoo', 'nyee', 'nya', 'nyieh', 'nyih', 'nyo'] },
+      { base: 'አ', forms: ['አ', 'ኡ', 'ኢ', 'ኣ', 'ኤ', 'እ', 'ኦ'], sounds: ['aah', 'oo', 'ee', 'aa', 'ieh', 'ih', 'o'] },
+      { base: 'ከ', forms: ['ከ', 'ኩ', 'ኪ', 'ካ', 'ኬ', 'ክ', 'ኮ'], sounds: ['keh', 'koo', 'kee', 'ka', 'kieh', 'kih', 'ko'] },
+      { base: 'ኸ', forms: ['ኸ', 'ኹ', 'ኺ', 'ኻ', 'ኼ', 'ኽ', 'ኾ'], sounds: ['kheh', 'khoo', 'khee', 'kha', 'khieh', 'khih', 'kho'] },
+      { base: 'ወ', forms: ['ወ', 'ዉ', 'ዊ', 'ዋ', 'ዌ', 'ው', 'ዎ'], sounds: ['weh', 'woo', 'wee', 'wa', 'wieh', 'wih', 'wo'] },
+      { base: 'ዐ', forms: ['ዐ', 'ዑ', 'ዒ', 'ዓ', 'ዔ', 'ዕ', 'ዖ'], sounds: ['aah', 'oo', 'ee', 'aa', 'ieh', 'ih', 'o'] },
+      { base: 'ዘ', forms: ['ዘ', 'ዙ', 'ዚ', 'ዛ', 'ዜ', 'ዝ', 'ዞ'], sounds: ['zeh', 'zoo', 'zee', 'za', 'zieh', 'zih', 'zo'] },
+      { base: 'ዠ', forms: ['ዠ', 'ዡ', 'ዢ', 'ዣ', 'ዤ', 'ዥ', 'ዦ'], sounds: ['zheh', 'zhoo', 'zhee', 'zha', 'zhieh', 'zhih', 'zho'] },
+      { base: 'የ', forms: ['የ', 'ዩ', 'ዪ', 'ያ', 'ዬ', 'ይ', 'ዮ'], sounds: ['yeh', 'yoo', 'yee', 'ya', 'yieh', 'yih', 'yo'] },
+      { base: 'ደ', forms: ['ደ', 'ዱ', 'ዲ', 'ዳ', 'ዴ', 'ድ', 'ዶ'], sounds: ['deh', 'doo', 'dee', 'da', 'dieh', 'dih', 'do'] },
+      { base: 'ጀ', forms: ['ጀ', 'ጁ', 'ጂ', 'ጃ', 'ጄ', 'ጅ', 'ጆ'], sounds: ['jeh', 'joo', 'jee', 'ja', 'jieh', 'jih', 'jo'] },
+      { base: 'ገ', forms: ['ገ', 'ጉ', 'ጊ', 'ጋ', 'ጌ', 'ግ', 'ጎ'], sounds: ['geh', 'goo', 'gee', 'ga', 'gieh', 'gih', 'go'] },
+      { base: 'ጠ', forms: ['ጠ', 'ጡ', 'ጢ', 'ጣ', 'ጤ', 'ጥ', 'ጦ'], sounds: ['teh', 'too', 'tee', 'ta', 'tieh', 'tih', 'to'] },
+      { base: 'ጨ', forms: ['ጨ', 'ጩ', 'ጪ', 'ጫ', 'ጬ', 'ጭ', 'ጮ'], sounds: ['cheh', 'choo', 'chee', 'cha', 'chieh', 'chih', 'cho'] },
+      { base: 'ጰ', forms: ['ጰ', 'ጱ', 'ጲ', 'ጳ', 'ጴ', 'ጵ', 'ጶ'], sounds: ['peh', 'poo', 'pee', 'pa', 'pieh', 'pih', 'po'] },
+      { base: 'ጸ', forms: ['ጸ', 'ጹ', 'ጺ', 'ጻ', 'ጼ', 'ጽ', 'ጾ'], sounds: ['tseh', 'tsoo', 'tsee', 'tsa', 'tsieh', 'tsih', 'tso'] },
+      { base: 'ፀ', forms: ['ፀ', 'ፁ', 'ፂ', 'ፃ', 'ፄ', 'ፅ', 'ፆ'], sounds: ['tseh', 'tsoo', 'tsee', 'tsa', 'tsieh', 'tsih', 'tso'] },
+      { base: 'ፈ', forms: ['ፈ', 'ፉ', 'ፊ', 'ፋ', 'ፌ', 'ፍ', 'ፎ'], sounds: ['feh', 'foo', 'fee', 'fa', 'fieh', 'fih', 'fo'] },
+      { base: 'ፐ', forms: ['ፐ', 'ፑ', 'ፒ', 'ፓ', 'ፔ', 'ፕ', 'ፖ'], sounds: ['peh', 'poo', 'pee', 'pa', 'pieh', 'pih', 'po'] }
     ];
 
     // DOM elements
-    const qIndexEl = document.getElementById('qIndex');
-    const qTotalEl = document.getElementById('qTotal');
-    const letterEl = document.getElementById('letter');
-    const answersEl = document.getElementById('answers');
-    const resultCard = document.getElementById('result');
-    const quizCard = document.getElementById('quizCard');
-    const scoreLine = document.getElementById('scoreLine');
-    const timeLine = document.getElementById('timeLine');
-    const restartBtn = document.getElementById('restartBtn');
-
-    // Set the total number of questions dynamically
-    qTotalEl.textContent = questions.length;
-
-    // Initialize enhanced quiz
-    let appInstance = createEnhancedQuizApp({
-      questions,
-      hooks: {
-        setHeader: (idx, total) => {
-          qIndexEl.textContent = idx;
-        },
-        renderPrompt: (q) => {
-          letterEl.textContent = q.meta.letter;
-        },
-        renderChoices: (q, onPick) => {
-          answersEl.innerHTML = '';
-          const shuffled = [...q.choices].sort(() => Math.random() - 0.5);
-          shuffled.forEach(opt => {
-            const btn = document.createElement('button');
-            btn.className = 'btn btn-outline-primary answer-btn';
-            btn.textContent = opt;
-            btn.addEventListener('click', () => onPick(opt));
-            answersEl.appendChild(btn);
-          });
-        },
-        finish: (score, total, percentage, timeTaken) => {
-          quizCard.classList.add('d-none');
-          resultCard.classList.remove('d-none');
-          
-          // Update score
-          scoreLine.textContent = `${score} ካብ ${total} ቅኑዕ መሊስካ/ኪ! (${percentage}%)`;
-          
-          // Update time
-          const timeText = timeTaken.minutes > 0
-            ? `${timeTaken.minutes}ደቓይቅ ${timeTaken.seconds}ካልኢት/ታት`
-            : `${timeTaken.seconds}ካልኢት/ታት`;
-          timeLine.textContent = `ንውሓት ግዜ: ${timeText}`;
-          
-          // Add celebration animation
-          resultCard.classList.add('celebrate');
-        }
+    const soundToggle = document.getElementById('soundToggle');
+    const alphabetGroups = document.getElementById('alphabetGroups');
+    
+    let soundEnabled = localStorage.getItem('soundEnabled') !== 'false';
+    updateSoundToggle();
+    
+    // Generate alphabet groups (4 rows each)
+    function generateAlphabetGroups() {
+      alphabetGroups.innerHTML = '';
+      
+      // Split alphabet into groups of 4
+      const groups = [];
+      for (let i = 0; i < tigrinyaAlphabet.length; i += 4) {
+        groups.push(tigrinyaAlphabet.slice(i, i + 4));
       }
+      
+      groups.forEach((group, groupIndex) => {
+        const groupDiv = document.createElement('div');
+        groupDiv.className = 'alphabet-group';
+        
+        // Group title
+        const title = document.createElement('h3');
+        title.className = 'group-title';
+        title.textContent = `ፊደላት ${groupIndex * 4 + 1}-${Math.min((groupIndex + 1) * 4, tigrinyaAlphabet.length)}`;
+        groupDiv.appendChild(title);
+        
+        // Letter info display for this group
+        const letterInfo = document.createElement('div');
+        letterInfo.className = 'group-letter-info';
+        letterInfo.innerHTML = `
+          <div class="group-selected-letter">ሀ</div>
+          <div class="group-selected-pronunciation">heh</div>
+        `;
+        groupDiv.appendChild(letterInfo);
+        
+        // Create rows for this group
+        group.forEach(letterData => {
+          const row = document.createElement('div');
+          row.className = 'alphabet-row';
+          
+          // Create 7 cards (only the 7 vowel forms, no wa form)
+          for (let i = 0; i < 7; i++) {
+            const card = document.createElement('div');
+            card.className = 'letter-card';
+            
+            card.innerHTML = `
+              <div class="tigrinya-char">${letterData.forms[i]}</div>
+              <div class="pronunciation">${letterData.sounds[i]}</div>
+            `;
+            card.dataset.letter = letterData.forms[i];
+            card.dataset.pronunciation = letterData.sounds[i];
+            card.dataset.groupIndex = groupIndex;
+            
+            card.addEventListener('click', () => handleLetterClick(card, groupDiv));
+            row.appendChild(card);
+          }
+          
+          groupDiv.appendChild(row);
+        });
+        
+        alphabetGroups.appendChild(groupDiv);
+      });
+    }
+    
+    // Handle letter click
+    function handleLetterClick(card, groupDiv) {
+      const letterChar = card.dataset.letter;
+      const letterPronunciation = card.dataset.pronunciation;
+      
+      // Find the letter info display within this group
+      const letterInfo = groupDiv.querySelector('.group-letter-info');
+      const selectedLetter = letterInfo.querySelector('.group-selected-letter');
+      const selectedPronunciation = letterInfo.querySelector('.group-selected-pronunciation');
+      
+      // Update letter info display for this group
+      selectedLetter.textContent = letterChar;
+      selectedPronunciation.textContent = letterPronunciation;
+      letterInfo.style.display = 'block';
+      
+      // Add playing animation
+      card.classList.add('playing');
+      setTimeout(() => {
+        card.classList.remove('playing');
+      }, 600);
+      
+      // Play sound if enabled
+      if (soundEnabled) {
+        playLetterSound(letterChar, letterPronunciation);
+      }
+      
+      // Don't scroll - keep user in current position
+    }
+    
+    // Sound toggle functionality
+    soundToggle.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      localStorage.setItem('soundEnabled', soundEnabled);
+      updateSoundToggle();
     });
-
-    // Restart functionality
-    restartBtn.addEventListener('click', () => {
-      quizCard.classList.remove('d-none');
-      resultCard.classList.add('d-none');
-      resultCard.classList.remove('celebrate');
-      appInstance.restart();
-    });
+    
+    function updateSoundToggle() {
+      soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+      soundToggle.title = soundEnabled ? 'Disable Sounds' : 'Enable Sounds';
+    }
+    
+    function playLetterSound(letter, pronunciation) {
+      try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        // Different frequencies for different sounds
+        const baseFreq = 220;
+        const freqMap = {
+          'h': 0, 'l': 2, 'm': 4, 's': 7, 'r': 9, 'sh': 11, 'q': 12, 'b': 14,
+          't': 16, 'ch': 18, 'n': 19, 'ny': 21, 'a': 24, 'k': 26, 'kh': 28,
+          'w': 29, 'z': 31, 'zh': 33, 'y': 34, 'd': 36, 'j': 38, 'g': 40,
+          'p': 43, 'ts': 45, 'f': 46
+        };
+        
+        let frequency = baseFreq;
+        for (const [sound, semitones] of Object.entries(freqMap)) {
+          if (pronunciation.includes(sound)) {
+            frequency = baseFreq * Math.pow(2, semitones / 12);
+            break;
+          }
+        }
+        
+        oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+        oscillator.type = 'sine';
+        
+        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+        
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.5);
+        
+        console.log(`🔊 Playing sound for letter ${letter} (${pronunciation})`);
+      } catch (error) {
+        console.log(`🔊 Sound not available for letter ${letter} (${pronunciation})`);
+      }
+    }
+    
+    // Initialize
+    generateAlphabetGroups();
+    
+    // Initialize sound manager if available
+    if (window.soundManager) {
+      window.soundManager.setEnabled(soundEnabled);
+    }
   </script>
 </body>
 </html>
