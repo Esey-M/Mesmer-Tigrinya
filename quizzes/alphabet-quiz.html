@@ -461,6 +461,102 @@
     
     function playLetterSound(letter, pronunciation) {
       try {
+        // Map pronunciation to audio file names
+        const audioFileMap = {
+          'heh': 'he.MP3',
+          'hoo': 'hu.MP3', 
+          'hee': 'hi.MP3',
+          'ha': 'ha.MP3',
+          'hieh': 'hie.MP3',
+          'hih': 'h.MP3',
+          'ho': 'ho.MP3',
+          'leh': 'le.MP3',
+          'loo': 'lu.MP3',
+          'lee': 'li.MP3', 
+          'la': 'la.MP3',
+          'lieh': 'lie.MP3',
+          'lih': 'l.MP3',
+          'lo': 'lo.MP3',
+          'meh': 'me.MP3',
+          'moo': 'mu.MP3',
+          'mee': 'mi.MP3',
+          'ma': 'ma.MP3',
+          'mieh': 'mie.MP3',
+          'mih': 'm.MP3',
+          'mo': 'mo.MP3',
+          'seh': 'se.MP3',
+          'soo': 'su.MP3',
+          'see': 'si.MP3',
+          'sa': 'sa.MP3',
+          'sieh': 'sie.MP3',
+          'sih': 's.MP3',
+          'so': 'so.MP3',
+          'reh': 're.MP3',
+          'roo': 'ru.MP3',
+          'ree': 'ri.MP3',
+          'ra': 'ra.MP3',
+          'rieh': 'rie.MP3',
+          'rih': 'r.MP3',
+          'ro': 'ro.MP3',
+          'sheh': 'she.MP3',
+          'shoo': 'shu.MP3',
+          'shee': 'shi.MP3',
+          'sha': 'sha.MP3',
+          'shieh': 'shie.MP3',
+          'shih': 'sh.MP3',
+          'sho': 'sho.MP3'
+        };
+        
+        // Special mapping for Row 3 (ሐ) - use specific Tigrinya character audio files
+        const tigrinyaCharAudioMap = {
+          'ሐ': 'ሐ.MP3',
+          'ሑ': 'ሑ.MP3', 
+          'ሒ': 'ሒ.MP3',
+          'ሓ': 'ሓ.MP3',
+          'ሔ': 'ሔ.MP3',
+          'ሕ': 'ሕ.MP3',
+          'ሖ': 'ሖ.MP3'
+        };
+        
+        // First check if we have a specific Tigrinya character audio file
+        const tigrinyaAudioFile = tigrinyaCharAudioMap[letter];
+        if (tigrinyaAudioFile) {
+          const audio = new Audio(`../audio/alphabets/${tigrinyaAudioFile}`);
+          audio.volume = 0.7;
+          audio.play().catch(error => {
+            console.log(`🔊 Tigrinya audio file not found: ${tigrinyaAudioFile}`);
+            // Fallback to pronunciation-based audio
+            playPronunciationAudio(pronunciation, letter);
+          });
+          console.log(`🔊 Playing Tigrinya audio file: ${tigrinyaAudioFile} for letter ${letter} (${pronunciation})`);
+        } else {
+          // For other rows, use pronunciation-based audio directly
+          const audioFile = audioFileMap[pronunciation];
+          if (audioFile) {
+            const audio = new Audio(`../audio/alphabets/${audioFile}`);
+            audio.volume = 0.7;
+            audio.play().catch(error => {
+              console.log(`🔊 Audio file not found: ${audioFile}`);
+              // Fallback to generated sound
+              playGeneratedSound(letter, pronunciation);
+            });
+            console.log(`🔊 Playing audio file: ${audioFile} for letter ${letter} (${pronunciation})`);
+          } else {
+            console.log(`🔊 No audio file mapped for pronunciation: ${pronunciation}`);
+            // Fallback to generated sound
+            playGeneratedSound(letter, pronunciation);
+          }
+        }
+      } catch (error) {
+        console.log(`🔊 Error playing sound for letter ${letter} (${pronunciation}):`, error);
+        // Fallback to generated sound
+        playGeneratedSound(letter, pronunciation);
+      }
+    }
+    
+    // Fallback function for generated sounds
+    function playGeneratedSound(letter, pronunciation) {
+      try {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         const oscillator = audioContext.createOscillator();
         const gainNode = audioContext.createGain();
@@ -494,9 +590,9 @@
         oscillator.start(audioContext.currentTime);
         oscillator.stop(audioContext.currentTime + 0.5);
         
-        console.log(`🔊 Playing sound for letter ${letter} (${pronunciation})`);
+        console.log(`🔊 Playing generated sound for letter ${letter} (${pronunciation})`);
       } catch (error) {
-        console.log(`🔊 Sound not available for letter ${letter} (${pronunciation})`);
+        console.log(`🔊 Generated sound not available for letter ${letter} (${pronunciation})`);
       }
     }
     
