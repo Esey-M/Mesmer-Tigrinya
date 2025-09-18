@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../css/style.css">
   <style>
     .alphabet-grid {
@@ -152,26 +153,6 @@
       font-size: 1.1rem;
     }
     
-    .sound-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      background: white;
-      border: 2px solid var(--brand-secondary);
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    
-    .sound-toggle:hover {
-      transform: scale(1.1);
-    }
     
     .instructions {
       background: linear-gradient(135deg, #fff3cd, #d1ecf1);
@@ -216,7 +197,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="../index.html">
-        <span class="me-2">●</span>
+        <img src="../images/mesmer-tigrinya-logo.png" alt="መስመር ትግርኛ" class="navbar-logo me-2">
         <span>መስመር ትግርኛ</span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
@@ -226,6 +207,7 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="../index.html">ቅድመ ገጽ</a></li>
           <li class="nav-item"><a class="nav-link" href="../quizzes.html">ትምህርትታት</a></li>
+          <li class="nav-item"><a class="nav-link" href="../stories.html">ዛንታታት</a></li>
           <li class="nav-item"><a class="nav-link" href="../parents.html">ንወለዲ</a></li>
           <li class="nav-item"><a class="nav-link" href="../ebooks.html">መምሃሪ መጻሕፍቲ</a></li>
           <li class="nav-item"><a class="nav-link" href="../contact.html">ኣብ ርክብ ንኺድ</a></li>
@@ -234,8 +216,6 @@
     </div>
   </nav>
 
-  <!-- Sound Toggle Button -->
-  <button id="soundToggle" class="btn btn-outline-secondary sound-toggle" title="Toggle Sounds">🔊</button>
 
   <main class="py-5" style="background: var(--surface); min-height: calc(100vh - 200px);">
     <div class="container">
@@ -281,84 +261,50 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-links">
-        <a href="../contact.html">Contact Us</a>
-        <a href="../privacy-policy.html">Privacy Policy</a>
-        <a href="../terms-of-use.html">Terms of Use</a>
-      </div>
-      <div class="footer-social" aria-label="Social media links">
-        <a href="#" aria-label="Facebook"></a>
-        <a href="#" aria-label="Twitter"></a>
-        <a href="#" aria-label="Instagram"></a>
-        <a href="#" aria-label="YouTube">📺</a>
-        <a href="#" aria-label="WhatsApp">📱</a>
-      </div>
-      <div class="footer-copyright">
-        <p>&copy; 2024 መስመር ትግርኛ. All rights reserved.</p>
-        <div class="footer-channel-links">
-          <a href="#" class="channel-link youtube-link" aria-label="YouTube Channel">
-            <span class="channel-icon">📺</span>
-            <span class="channel-text">YouTube Channel</span>
-          </a>
-          <a href="#" class="channel-link whatsapp-link" aria-label="WhatsApp Channel">
-            <span class="channel-icon">📱</span>
-            <span class="channel-text">WhatsApp Channel</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../js/soundConfig.js"></script>
   <script src="../js/quizApp.js"></script>
   <script>
-    // Tigrinya alphabet data with all 7 vowel forms
+    // Tigrinya alphabet data with all 7 vowel forms and proper Tigrinya names
     const tigrinyaAlphabet = [
-      { base: 'ሀ', forms: ['ሀ', 'ሁ', 'ሂ', 'ሃ', 'ሄ', 'ህ', 'ሆ'], sounds: ['heh', 'hoo', 'hee', 'ha', 'hieh', 'hih', 'ho'] },
-      { base: 'ለ', forms: ['ለ', 'ሉ', 'ሊ', 'ላ', 'ሌ', 'ል', 'ሎ'], sounds: ['leh', 'loo', 'lee', 'la', 'lieh', 'lih', 'lo'] },
-      { base: 'ሐ', forms: ['ሐ', 'ሑ', 'ሒ', 'ሓ', 'ሔ', 'ሕ', 'ሖ'], sounds: ['heh', 'hoo', 'hee', 'ha', 'hieh', 'hih', 'ho'] },
-      { base: 'መ', forms: ['መ', 'ሙ', 'ሚ', 'ማ', 'ሜ', 'ም', 'ሞ'], sounds: ['meh', 'moo', 'mee', 'ma', 'mieh', 'mih', 'mo'] },
-      { base: 'ሠ', forms: ['ሠ', 'ሡ', 'ሢ', 'ሣ', 'ሤ', 'ሥ', 'ሦ'], sounds: ['seh', 'soo', 'see', 'sa', 'sieh', 'sih', 'so'] },
-      { base: 'ረ', forms: ['ረ', 'ሩ', 'ሪ', 'ራ', 'ሬ', 'ር', 'ሮ'], sounds: ['reh', 'roo', 'ree', 'ra', 'rieh', 'rih', 'ro'] },
-      { base: 'ሰ', forms: ['ሰ', 'ሱ', 'ሲ', 'ሳ', 'ሴ', 'ስ', 'ሶ'], sounds: ['seh', 'soo', 'see', 'sa', 'sieh', 'sih', 'so'] },
-      { base: 'ሸ', forms: ['ሸ', 'ሹ', 'ሺ', 'ሻ', 'ሼ', 'ሽ', 'ሾ'], sounds: ['sheh', 'shoo', 'shee', 'sha', 'shieh', 'shih', 'sho'] },
-      { base: 'ቀ', forms: ['ቀ', 'ቁ', 'ቂ', 'ቃ', 'ቄ', 'ቅ', 'ቆ'], sounds: ['qeh', 'qoo', 'qee', 'qa', 'qieh', 'qih', 'qo'] },
-      { base: 'በ', forms: ['በ', 'ቡ', 'ቢ', 'ባ', 'ቤ', 'ብ', 'ቦ'], sounds: ['beh', 'boo', 'bee', 'ba', 'bieh', 'bih', 'bo'] },
-      { base: 'ተ', forms: ['ተ', 'ቱ', 'ቲ', 'ታ', 'ቴ', 'ት', 'ቶ'], sounds: ['teh', 'too', 'tee', 'ta', 'tieh', 'tih', 'to'] },
-      { base: 'ቸ', forms: ['ቸ', 'ቹ', 'ቺ', 'ቻ', 'ቼ', 'ች', 'ቾ'], sounds: ['cheh', 'choo', 'chee', 'cha', 'chieh', 'chih', 'cho'] },
-      { base: 'ኀ', forms: ['ኀ', 'ኁ', 'ኂ', 'ኃ', 'ኄ', 'ኅ', 'ኆ'], sounds: ['heh', 'hoo', 'hee', 'ha', 'hieh', 'hih', 'ho'] },
-      { base: 'ነ', forms: ['ነ', 'ኑ', 'ኒ', 'ና', 'ኔ', 'ን', 'ኖ'], sounds: ['neh', 'noo', 'nee', 'na', 'nieh', 'nih', 'no'] },
-      { base: 'ኘ', forms: ['ኘ', 'ኙ', 'ኚ', 'ኛ', 'ኜ', 'ኝ', 'ኞ'], sounds: ['nyeh', 'nyoo', 'nyee', 'nya', 'nyieh', 'nyih', 'nyo'] },
-      { base: 'አ', forms: ['አ', 'ኡ', 'ኢ', 'ኣ', 'ኤ', 'እ', 'ኦ'], sounds: ['aah', 'oo', 'ee', 'aa', 'ieh', 'ih', 'o'] },
-      { base: 'ከ', forms: ['ከ', 'ኩ', 'ኪ', 'ካ', 'ኬ', 'ክ', 'ኮ'], sounds: ['keh', 'koo', 'kee', 'ka', 'kieh', 'kih', 'ko'] },
-      { base: 'ኸ', forms: ['ኸ', 'ኹ', 'ኺ', 'ኻ', 'ኼ', 'ኽ', 'ኾ'], sounds: ['kheh', 'khoo', 'khee', 'kha', 'khieh', 'khih', 'kho'] },
-      { base: 'ወ', forms: ['ወ', 'ዉ', 'ዊ', 'ዋ', 'ዌ', 'ው', 'ዎ'], sounds: ['weh', 'woo', 'wee', 'wa', 'wieh', 'wih', 'wo'] },
-      { base: 'ዐ', forms: ['ዐ', 'ዑ', 'ዒ', 'ዓ', 'ዔ', 'ዕ', 'ዖ'], sounds: ['aah', 'oo', 'ee', 'aa', 'ieh', 'ih', 'o'] },
-      { base: 'ዘ', forms: ['ዘ', 'ዙ', 'ዚ', 'ዛ', 'ዜ', 'ዝ', 'ዞ'], sounds: ['zeh', 'zoo', 'zee', 'za', 'zieh', 'zih', 'zo'] },
-      { base: 'ዠ', forms: ['ዠ', 'ዡ', 'ዢ', 'ዣ', 'ዤ', 'ዥ', 'ዦ'], sounds: ['zheh', 'zhoo', 'zhee', 'zha', 'zhieh', 'zhih', 'zho'] },
-      { base: 'የ', forms: ['የ', 'ዩ', 'ዪ', 'ያ', 'ዬ', 'ይ', 'ዮ'], sounds: ['yeh', 'yoo', 'yee', 'ya', 'yieh', 'yih', 'yo'] },
-      { base: 'ደ', forms: ['ደ', 'ዱ', 'ዲ', 'ዳ', 'ዴ', 'ድ', 'ዶ'], sounds: ['deh', 'doo', 'dee', 'da', 'dieh', 'dih', 'do'] },
-      { base: 'ጀ', forms: ['ጀ', 'ጁ', 'ጂ', 'ጃ', 'ጄ', 'ጅ', 'ጆ'], sounds: ['jeh', 'joo', 'jee', 'ja', 'jieh', 'jih', 'jo'] },
-      { base: 'ገ', forms: ['ገ', 'ጉ', 'ጊ', 'ጋ', 'ጌ', 'ግ', 'ጎ'], sounds: ['geh', 'goo', 'gee', 'ga', 'gieh', 'gih', 'go'] },
-      { base: 'ጠ', forms: ['ጠ', 'ጡ', 'ጢ', 'ጣ', 'ጤ', 'ጥ', 'ጦ'], sounds: ['teh', 'too', 'tee', 'ta', 'tieh', 'tih', 'to'] },
-      { base: 'ጨ', forms: ['ጨ', 'ጩ', 'ጪ', 'ጫ', 'ጬ', 'ጭ', 'ጮ'], sounds: ['cheh', 'choo', 'chee', 'cha', 'chieh', 'chih', 'cho'] },
-      { base: 'ጰ', forms: ['ጰ', 'ጱ', 'ጲ', 'ጳ', 'ጴ', 'ጵ', 'ጶ'], sounds: ['peh', 'poo', 'pee', 'pa', 'pieh', 'pih', 'po'] },
-      { base: 'ጸ', forms: ['ጸ', 'ጹ', 'ጺ', 'ጻ', 'ጼ', 'ጽ', 'ጾ'], sounds: ['tseh', 'tsoo', 'tsee', 'tsa', 'tsieh', 'tsih', 'tso'] },
-      { base: 'ፀ', forms: ['ፀ', 'ፁ', 'ፂ', 'ፃ', 'ፄ', 'ፅ', 'ፆ'], sounds: ['tseh', 'tsoo', 'tsee', 'tsa', 'tsieh', 'tsih', 'tso'] },
-      { base: 'ፈ', forms: ['ፈ', 'ፉ', 'ፊ', 'ፋ', 'ፌ', 'ፍ', 'ፎ'], sounds: ['feh', 'foo', 'fee', 'fa', 'fieh', 'fih', 'fo'] },
-      { base: 'ፐ', forms: ['ፐ', 'ፑ', 'ፒ', 'ፓ', 'ፔ', 'ፕ', 'ፖ'], sounds: ['peh', 'poo', 'pee', 'pa', 'pieh', 'pih', 'po'] }
+      { base: 'ሀ', forms: ['ሀ', 'ሁ', 'ሂ', 'ሃ', 'ሄ', 'ህ', 'ሆ'], sounds: ['ሀ', 'ሁ', 'ሂ', 'ሃ', 'ሄ', 'ህ', 'ሆ'] },
+      { base: 'ለ', forms: ['ለ', 'ሉ', 'ሊ', 'ላ', 'ሌ', 'ል', 'ሎ'], sounds: ['ለ', 'ሉ', 'ሊ', 'ላ', 'ሌ', 'ል', 'ሎ'] },
+      { base: 'ሐ', forms: ['ሐ', 'ሑ', 'ሒ', 'ሓ', 'ሔ', 'ሕ', 'ሖ'], sounds: ['ሐ', 'ሑ', 'ሒ', 'ሓ', 'ሔ', 'ሕ', 'ሖ'] },
+      { base: 'መ', forms: ['መ', 'ሙ', 'ሚ', 'ማ', 'ሜ', 'ም', 'ሞ'], sounds: ['መ', 'ሙ', 'ሚ', 'ማ', 'ሜ', 'ም', 'ሞ'] },
+      { base: 'ረ', forms: ['ረ', 'ሩ', 'ሪ', 'ራ', 'ሬ', 'ር', 'ሮ'], sounds: ['ረ', 'ሩ', 'ሪ', 'ራ', 'ሬ', 'ር', 'ሮ'] },
+      { base: 'ሰ', forms: ['ሰ', 'ሱ', 'ሲ', 'ሳ', 'ሴ', 'ስ', 'ሶ'], sounds: ['ሰ', 'ሱ', 'ሲ', 'ሳ', 'ሴ', 'ስ', 'ሶ'] },
+      { base: 'ሸ', forms: ['ሸ', 'ሹ', 'ሺ', 'ሻ', 'ሼ', 'ሽ', 'ሾ'], sounds: ['ሸ', 'ሹ', 'ሺ', 'ሻ', 'ሼ', 'ሽ', 'ሾ'] },
+      { base: 'ቀ', forms: ['ቀ', 'ቁ', 'ቂ', 'ቃ', 'ቄ', 'ቅ', 'ቆ'], sounds: ['ቀ', 'ቁ', 'ቂ', 'ቃ', 'ቄ', 'ቅ', 'ቆ'] },
+      { base: 'ቐ', forms: ['ቐ', 'ቑ', 'ቒ', 'ቓ', 'ቔ', 'ቕ', 'ቖ'], sounds: ['ቐ', 'ቑ', 'ቒ', 'ቓ', 'ቔ', 'ቕ', 'ቖ'] },
+      { base: 'በ', forms: ['በ', 'ቡ', 'ቢ', 'ባ', 'ቤ', 'ብ', 'ቦ'], sounds: ['በ', 'ቡ', 'ቢ', 'ባ', 'ቤ', 'ብ', 'ቦ'] },
+      { base: 'ተ', forms: ['ተ', 'ቱ', 'ቲ', 'ታ', 'ቴ', 'ት', 'ቶ'], sounds: ['ተ', 'ቱ', 'ቲ', 'ታ', 'ቴ', 'ት', 'ቶ'] },
+      { base: 'ቸ', forms: ['ቸ', 'ቹ', 'ቺ', 'ቻ', 'ቼ', 'ች', 'ቾ'], sounds: ['ቸ', 'ቹ', 'ቺ', 'ቻ', 'ቼ', 'ች', 'ቾ'] },
+      { base: 'ነ', forms: ['ነ', 'ኑ', 'ኒ', 'ና', 'ኔ', 'ን', 'ኖ'], sounds: ['ነ', 'ኑ', 'ኒ', 'ና', 'ኔ', 'ን', 'ኖ'] },
+      { base: 'ኘ', forms: ['ኘ', 'ኙ', 'ኚ', 'ኛ', 'ኜ', 'ኝ', 'ኞ'], sounds: ['ኘ', 'ኙ', 'ኚ', 'ኛ', 'ኜ', 'ኝ', 'ኞ'] },
+      { base: 'አ', forms: ['አ', 'ኡ', 'ኢ', 'ኣ', 'ኤ', 'እ', 'ኦ'], sounds: ['አ', 'ኡ', 'ኢ', 'ኣ', 'ኤ', 'እ', 'ኦ'] },
+      { base: 'ከ', forms: ['ከ', 'ኩ', 'ኪ', 'ካ', 'ኬ', 'ክ', 'ኮ'], sounds: ['ከ', 'ኩ', 'ኪ', 'ካ', 'ኬ', 'ክ', 'ኮ'] },
+      { base: 'ኸ', forms: ['ኸ', 'ኹ', 'ኺ', 'ኻ', 'ኼ', 'ኽ', 'ኾ'], sounds: ['ኸ', 'ኹ', 'ኺ', 'ኻ', 'ኼ', 'ኽ', 'ኾ'] },
+      { base: 'ወ', forms: ['ወ', 'ዉ', 'ዊ', 'ዋ', 'ዌ', 'ው', 'ዎ'], sounds: ['ወ', 'ዉ', 'ዊ', 'ዋ', 'ዌ', 'ው', 'ዎ'] },
+      { base: 'ዐ', forms: ['ዐ', 'ዑ', 'ዒ', 'ዓ', 'ዔ', 'ዕ', 'ዖ'], sounds: ['ዐ', 'ዑ', 'ዒ', 'ዓ', 'ዔ', 'ዕ', 'ዖ'] },
+      { base: 'ዘ', forms: ['ዘ', 'ዙ', 'ዚ', 'ዛ', 'ዜ', 'ዝ', 'ዞ'], sounds: ['ዘ', 'ዙ', 'ዚ', 'ዛ', 'ዜ', 'ዝ', 'ዞ'] },
+      { base: 'ዠ', forms: ['ዠ', 'ዡ', 'ዢ', 'ዣ', 'ዤ', 'ዥ', 'ዦ'], sounds: ['ዠ', 'ዡ', 'ዢ', 'ዣ', 'ዤ', 'ዥ', 'ዦ'] },
+      { base: 'የ', forms: ['የ', 'ዩ', 'ዪ', 'ያ', 'ዬ', 'ይ', 'ዮ'], sounds: ['የ', 'ዩ', 'ዪ', 'ያ', 'ዬ', 'ይ', 'ዮ'] },
+      { base: 'ደ', forms: ['ደ', 'ዱ', 'ዲ', 'ዳ', 'ዴ', 'ድ', 'ዶ'], sounds: ['ደ', 'ዱ', 'ዲ', 'ዳ', 'ዴ', 'ድ', 'ዶ'] },
+      { base: 'ጀ', forms: ['ጀ', 'ጁ', 'ጂ', 'ጃ', 'ጄ', 'ጅ', 'ጆ'], sounds: ['ጀ', 'ጁ', 'ጂ', 'ጃ', 'ጄ', 'ጅ', 'ጆ'] },
+      { base: 'ገ', forms: ['ገ', 'ጉ', 'ጊ', 'ጋ', 'ጌ', 'ግ', 'ጎ'], sounds: ['ገ', 'ጉ', 'ጊ', 'ጋ', 'ጌ', 'ግ', 'ጎ'] },
+      { base: 'ጠ', forms: ['ጠ', 'ጡ', 'ጢ', 'ጣ', 'ጤ', 'ጥ', 'ጦ'], sounds: ['ጠ', 'ጡ', 'ጢ', 'ጣ', 'ጤ', 'ጥ', 'ጦ'] },
+      { base: 'ጨ', forms: ['ጨ', 'ጩ', 'ጪ', 'ጫ', 'ጬ', 'ጭ', 'ጮ'], sounds: ['ጨ', 'ጩ', 'ጪ', 'ጫ', 'ጬ', 'ጭ', 'ጮ'] },
+      { base: 'ጰ', forms: ['ጰ', 'ጱ', 'ጲ', 'ጳ', 'ጴ', 'ጵ', 'ጶ'], sounds: ['ጰ', 'ጱ', 'ጲ', 'ጳ', 'ጴ', 'ጵ', 'ጶ'] },
+      { base: 'ጸ', forms: ['ጸ', 'ጹ', 'ጺ', 'ጻ', 'ጼ', 'ጽ', 'ጾ'], sounds: ['ጸ', 'ጹ', 'ጺ', 'ጻ', 'ጼ', 'ጽ', 'ጾ'] },
+      { base: 'ፈ', forms: ['ፈ', 'ፉ', 'ፊ', 'ፋ', 'ፌ', 'ፍ', 'ፎ'], sounds: ['ፈ', 'ፉ', 'ፊ', 'ፋ', 'ፌ', 'ፍ', 'ፎ'] },
+      { base: 'ፐ', forms: ['ፐ', 'ፑ', 'ፒ', 'ፓ', 'ፔ', 'ፕ', 'ፖ'], sounds: ['ፐ', 'ፑ', 'ፒ', 'ፓ', 'ፔ', 'ፕ', 'ፖ'] }
     ];
 
     // DOM elements
-    const soundToggle = document.getElementById('soundToggle');
-    const alphabetGroups = document.getElementById('alphabetGroups');
+      const alphabetGroups = document.getElementById('alphabetGroups');
     
     let soundEnabled = localStorage.getItem('soundEnabled') !== 'false';
-    updateSoundToggle();
     
     // Generate alphabet groups (4 rows each)
     function generateAlphabetGroups() {
@@ -447,108 +393,21 @@
       // Don't scroll - keep user in current position
     }
     
-    // Sound toggle functionality
-    soundToggle.addEventListener('click', () => {
-      soundEnabled = !soundEnabled;
-      localStorage.setItem('soundEnabled', soundEnabled);
-      updateSoundToggle();
-    });
-    
-    function updateSoundToggle() {
-      soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
-      soundToggle.title = soundEnabled ? 'Disable Sounds' : 'Enable Sounds';
-    }
     
     function playLetterSound(letter, pronunciation) {
       try {
-        // Map pronunciation to audio file names
-        const audioFileMap = {
-          'heh': 'he.MP3',
-          'hoo': 'hu.MP3', 
-          'hee': 'hi.MP3',
-          'ha': 'ha.MP3',
-          'hieh': 'hie.MP3',
-          'hih': 'h.MP3',
-          'ho': 'ho.MP3',
-          'leh': 'le.MP3',
-          'loo': 'lu.MP3',
-          'lee': 'li.MP3', 
-          'la': 'la.MP3',
-          'lieh': 'lie.MP3',
-          'lih': 'l.MP3',
-          'lo': 'lo.MP3',
-          'meh': 'me.MP3',
-          'moo': 'mu.MP3',
-          'mee': 'mi.MP3',
-          'ma': 'ma.MP3',
-          'mieh': 'mie.MP3',
-          'mih': 'm.MP3',
-          'mo': 'mo.MP3',
-          'seh': 'se.MP3',
-          'soo': 'su.MP3',
-          'see': 'si.MP3',
-          'sa': 'sa.MP3',
-          'sieh': 'sie.MP3',
-          'sih': 's.MP3',
-          'so': 'so.MP3',
-          'reh': 're.MP3',
-          'roo': 'ru.MP3',
-          'ree': 'ri.MP3',
-          'ra': 'ra.MP3',
-          'rieh': 'rie.MP3',
-          'rih': 'r.MP3',
-          'ro': 'ro.MP3',
-          'sheh': 'she.MP3',
-          'shoo': 'shu.MP3',
-          'shee': 'shi.MP3',
-          'sha': 'sha.MP3',
-          'shieh': 'shie.MP3',
-          'shih': 'sh.MP3',
-          'sho': 'sho.MP3'
-        };
-        
-        // Special mapping for Row 3 (ሐ) - use specific Tigrinya character audio files
-        const tigrinyaCharAudioMap = {
-          'ሐ': 'ሐ.MP3',
-          'ሑ': 'ሑ.MP3', 
-          'ሒ': 'ሒ.MP3',
-          'ሓ': 'ሓ.MP3',
-          'ሔ': 'ሔ.MP3',
-          'ሕ': 'ሕ.MP3',
-          'ሖ': 'ሖ.MP3'
-        };
-        
-        // First check if we have a specific Tigrinya character audio file
-        const tigrinyaAudioFile = tigrinyaCharAudioMap[letter];
-        if (tigrinyaAudioFile) {
-          const audio = new Audio(`../audio/alphabets/${tigrinyaAudioFile}`);
-          audio.volume = 0.7;
-          audio.play().catch(error => {
-            console.log(`🔊 Tigrinya audio file not found: ${tigrinyaAudioFile}`);
-            // Fallback to pronunciation-based audio
-            playPronunciationAudio(pronunciation, letter);
-          });
-          console.log(`🔊 Playing Tigrinya audio file: ${tigrinyaAudioFile} for letter ${letter} (${pronunciation})`);
-        } else {
-          // For other rows, use pronunciation-based audio directly
-          const audioFile = audioFileMap[pronunciation];
-          if (audioFile) {
-            const audio = new Audio(`../audio/alphabets/${audioFile}`);
-            audio.volume = 0.7;
-            audio.play().catch(error => {
-              console.log(`🔊 Audio file not found: ${audioFile}`);
-              // Fallback to generated sound
-              playGeneratedSound(letter, pronunciation);
-            });
-            console.log(`🔊 Playing audio file: ${audioFile} for letter ${letter} (${pronunciation})`);
-          } else {
-            console.log(`🔊 No audio file mapped for pronunciation: ${pronunciation}`);
-            // Fallback to generated sound
-            playGeneratedSound(letter, pronunciation);
-          }
-        }
+        // Direct mapping: each Tigrinya character has its own audio file
+        const audioFile = `${letter}.MP3`;
+        const audio = new Audio(`../audio/alphabets/${audioFile}`);
+        audio.volume = 0.7;
+        audio.play().catch(error => {
+          console.log(`🔊 Tigrinya audio file not found: ${audioFile}`);
+          // Fallback to generated sound
+          playGeneratedSound(letter, pronunciation);
+        });
+        console.log(`🔊 Playing Tigrinya audio file: ${audioFile} for letter ${letter}`);
       } catch (error) {
-        console.log(`🔊 Error playing sound for letter ${letter} (${pronunciation}):`, error);
+        console.log(`🔊 Error playing sound for letter ${letter}:`, error);
         // Fallback to generated sound
         playGeneratedSound(letter, pronunciation);
       }
@@ -604,5 +463,24 @@
       window.soundManager.setEnabled(soundEnabled);
     }
   </script>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top"></div>
+      <div class="footer-links">
+        <a href="../contact.html">Contact Us</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms-of-use.html">Terms of Use</a>
+      </div>
+      <div class="footer-social" aria-label="Social media links">
+         <a href="https://www.youtube.com/@debre-xgie-haaglanden" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa fa-youtube-play" style="font-size:48px;color:red"></i></a>
+         <a href="https://whatsapp.com/channel/0029VbBDOZZ545uvePNY6Z0x" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa fa-whatsapp" style="font-size:48px;color:green"></i></a>
+      </div>
+      <div class="footer-copyright">
+        <p>&copy; 2025 መስመር ትግርኛ. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

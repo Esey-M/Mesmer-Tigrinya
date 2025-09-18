@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ዛንታታት - Tigrinya Stories — መስመር ትግርኛ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .stories-hero {
+      background: linear-gradient(135deg, var(--surface) 0%, #fde9d5 50%, #fff5e6 100%);
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    .video-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 2rem;
+    }
+    
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .video-thumbnail {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .video-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #e74c3c;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .play-button:hover {
+      background: white;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    
+    .video-content {
+      padding: 1.5rem;
+    }
+    
+    .video-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+    
+    .video-description {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    
+    .video-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    
+    .video-duration {
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+    
+    .modal-video {
+      width: 100%;
+      height: 450px;
+      border: none;
+      border-radius: 10px;
+    }
+    
+    @media (min-width: 768px) {
+      .modal-video {
+        height: 600px;
+      }
+    }
+    
+    .story-category {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="images/mesmer-tigrinya-logo.png" alt="መስመር ትግርኛ" class="navbar-logo me-2">
+        <span>መስመር ትግርኛ</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">ቅድመ ገጽ</a></li>
+          <li class="nav-item"><a class="nav-link" href="quizzes.html">ትምህርትታት</a></li>
+          <li class="nav-item"><a class="nav-link active" href="stories.html" aria-current="page">ዛንታታት</a></li>
+          <li class="nav-item"><a class="nav-link" href="parents.html">ንወለዲ</a></li>
+          <li class="nav-item"><a class="nav-link" href="ebooks.html">መምሃሪ መጻሕፍቲ</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">ኣብ ርክብ ንኺድ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Stories Hero -->
+  <section class="stories-hero">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-3">📚 ዛንታታት ትግርኛ / Tigrinya Stories</h1>
+      <p class="fs-5 text-muted">ብኣዘናጋዒ መንገዲ ትግርኛ ዛንታታት ሰሚዕን ተመሃርን! / Listen and learn with fun Tigrinya stories!</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="container py-5">
+      <div class="row">
+        <!-- Story 1 -->
+        <div class="col-lg-6 mb-4">
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="https://img.youtube.com/vi/auUZpj51cB0/maxresdefault.jpg" alt="Tigrinya Alphabet Story">
+              <div class="play-button" data-bs-toggle="modal" data-bs-target="#storyModal1">
+                <i class="fa fa-play"></i>
+              </div>
+            </div>
+            <div class="video-content">
+              <div class="story-category">ፊደላት / Alphabet</div>
+              <h3 class="video-title">ፊደላት ትግርኛ ብዛንታ / Tigrinya Alphabet Story</h3>
+              <p class="video-description">
+                እዚ ዛንታ ንህጻናት ንፊደላት ትግርኛ ብኣዘናጋዒ መንገዲ ንምምሃር ዝሕግዝ። ኣብ ዛንታ እዚ እንታይ እዩ ዝፍጸም ኣብ ሓደ ቤት ትምህርቲ እንታይ እዩ ዝፍጸም።
+                <br><br>
+                This story helps children learn Tigrinya alphabet in a fun way. Discover what happens in a magical school where letters come to life and teach us about Tigrinya culture.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 2 -->
+        <div class="col-lg-6 mb-4">
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" alt="Numbers in Tigrinya">
+              <div class="play-button" data-bs-toggle="modal" data-bs-target="#storyModal2">
+                <i class="fa fa-play"></i>
+              </div>
+            </div>
+            <div class="video-content">
+              <div class="story-category">ቁጽርታት / Numbers</div>
+              <h3 class="video-title">ቁጽርታት ኣብ ትግርኛ / Numbers in Tigrinya</h3>
+              <p class="video-description">
+                እዚ ዛንታ ንህጻናት ቁጽርታት ኣብ ትግርኛ ንምምሃር ዝሕግዝ። ምስ ሓደ ንእሽቶ ህጻን ኣብ ኣውራጃ ቁጽርታት ንኺድ ኣለና።
+                <br><br>
+                This story helps children learn numbers in Tigrinya. Join a little child on an adventure through the land of numbers, where each number has its own personality and story.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 3 -->
+        <div class="col-lg-6 mb-4">
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=80&w=800&auto=format&fit=crop" alt="Family in Tigrinya">
+              <div class="play-button" data-bs-toggle="modal" data-bs-target="#storyModal3">
+                <i class="fa fa-play"></i>
+              </div>
+            </div>
+            <div class="video-content">
+              <div class="story-category">ስድራቤት / Family</div>
+              <h3 class="video-title">ስድራቤትና ብትግርኛ / Our Family in Tigrinya</h3>
+              <p class="video-description">
+                እዚ ዛንታ ብዛሕተን ስድራቤት ትግርኛ ንምምሃር ዝሕግዝ። ኣብ ዛንታ እዚ እንታይ እዩ ዝፍጸም ኣብ ሓደ ስድራቤት እንታይ እዩ ዝፍጸም።
+                <br><br>
+                This story helps children learn family terms in Tigrinya. Discover the beautiful relationships and traditions within a Tigrinya family through this heartwarming tale.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 4 -->
+        <div class="col-lg-6 mb-4">
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=800&auto=format&fit=crop" alt="Colors in Tigrinya">
+              <div class="play-button" data-bs-toggle="modal" data-bs-target="#storyModal4">
+                <i class="fa fa-play"></i>
+              </div>
+            </div>
+            <div class="video-content">
+              <div class="story-category">ሕብርታት / Colors</div>
+              <h3 class="video-title">ሕብርታት ኣብ ትግርኛ / Colors in Tigrinya</h3>
+              <p class="video-description">
+                እዚ ዛንታ ንህጻናት ሕብርታት ኣብ ትግርኛ ንምምሃር ዝሕግዝ። ምስ ሓደ ንእሽቶ ህጻን ኣብ ኣውራጃ ሕብርታት ንኺድ ኣለና።
+                <br><br>
+                This story helps children learn colors in Tigrinya. Join a little child on a colorful adventure through the rainbow world, where each color teaches us something special.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 5 -->
+        <div class="col-lg-6 mb-4">
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=800&auto=format&fit=crop" alt="Animals in Tigrinya">
+              <div class="play-button" data-bs-toggle="modal" data-bs-target="#storyModal5">
+                <i class="fa fa-play"></i>
+              </div>
+            </div>
+            <div class="video-content">
+              <div class="story-category">እንስሳታት / Animals</div>
+              <h3 class="video-title">እንስሳታት ኣብ ትግርኛ / Animals in Tigrinya</h3>
+              <p class="video-description">
+                እዚ ዛንታ ንህጻናት እንስሳታት ኣብ ትግርኛ ንምምሃር ዝሕግዝ። ኣብ ዛንታ እዚ እንታይ እዩ ዝፍጸም ኣብ ሓደ ደጋ እንታይ እዩ ዝፍጸም።
+                <br><br>
+                This story helps children learn animal names in Tigrinya. Discover the amazing animals that live in Eritrea and Ethiopia, and learn their names in Tigrinya through this exciting adventure.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 6 -->
+        <div class="col-lg-6 mb-4">
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=800&auto=format&fit=crop" alt="Food in Tigrinya">
+              <div class="play-button" data-bs-toggle="modal" data-bs-target="#storyModal6">
+                <i class="fa fa-play"></i>
+              </div>
+            </div>
+            <div class="video-content">
+              <div class="story-category">መግቢ / Food</div>
+              <h3 class="video-title">መግቢ ትግርኛ / Tigrinya Food</h3>
+              <p class="video-description">
+                እዚ ዛንታ ንህጻናት መግቢ ትግርኛ ንምምሃር ዝሕግዝ። ኣብ ዛንታ እዚ እንታይ እዩ ዝፍጸም ኣብ ሓደ ቤት መግቢ እንታይ እዩ ዝፍጸም።
+                <br><br>
+                This story helps children learn about traditional Tigrinya food. Join us on a culinary journey through Eritrean and Ethiopian cuisine, learning the names of delicious dishes in Tigrinya.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Video Modals -->
+  <!-- Modal 1 -->
+  <div class="modal fade" id="storyModal1" tabindex="-1" aria-labelledby="storyModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="storyModal1Label">ፊደላት ትግርኛ ብዛንታ / Tigrinya Alphabet Story</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <iframe class="modal-video" src="https://www.youtube.com/embed/auUZpj51cB0" title="Tigrinya Alphabet Story" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div class="modal fade" id="storyModal2" tabindex="-1" aria-labelledby="storyModal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="storyModal2Label">ቁጽርታት ኣብ ትግርኛ / Numbers in Tigrinya</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <iframe class="modal-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Numbers in Tigrinya" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div class="modal fade" id="storyModal3" tabindex="-1" aria-labelledby="storyModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="storyModal3Label">ስድራቤትና ብትግርኛ / Our Family in Tigrinya</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <iframe class="modal-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Our Family in Tigrinya" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4 -->
+  <div class="modal fade" id="storyModal4" tabindex="-1" aria-labelledby="storyModal4Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="storyModal4Label">ሕብርታት ኣብ ትግርኛ / Colors in Tigrinya</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <iframe class="modal-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Colors in Tigrinya" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5 -->
+  <div class="modal fade" id="storyModal5" tabindex="-1" aria-labelledby="storyModal5Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="storyModal5Label">እንስሳታት ኣብ ትግርኛ / Animals in Tigrinya</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <iframe class="modal-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Animals in Tigrinya" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 6 -->
+  <div class="modal fade" id="storyModal6" tabindex="-1" aria-labelledby="storyModal6Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="storyModal6Label">መግቢ ትግርኛ / Tigrinya Food</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <iframe class="modal-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Tigrinya Food" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top"></div>
+      <div class="footer-links">
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-use.html">Terms of Use</a>
+      </div>
+      <div class="footer-social" aria-label="Social media links">
+         <a href="https://www.youtube.com/@debre-xgie-haaglanden" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa fa-youtube-play" style="font-size:48px;color:red"></i></a>
+         <a href="https://whatsapp.com/channel/0029VbBDOZZ545uvePNY6Z0x" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa fa-whatsapp" style="font-size:48px;color:green"></i></a>
+      </div>
+      <div class="footer-copyright">
+        <p>&copy; 2025 መስመር ትግርኛ. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
