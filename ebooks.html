@@ -29,6 +29,8 @@
     
     .book-card:hover {
       transform: translateY(-5px);
+      z-index: 1;
+      position: relative;
     }
     
     .book-cover {
@@ -110,32 +112,32 @@
   <!-- eBooks Hero Section -->
   <section class="ebooks-hero">
     <div class="container">
-      <h1 class="display-4 fw-bold mb-3">📚 መምሃሪ መጻሕፍቲ / Educational Books</h1>
-      <p class="fs-5 text-muted">Free downloadable resources for Tigrinya learning</p>
-      <p class="fs-6 text-muted">ናይ ትግርኛ ትምህርቲ ናጻ ዝርከብ ምርኮታት</p>
+      <h1 class="display-4 fw-bold mb-3">📚 መምሃሪ መጻሕፍቲ</h1>
+      <p class="fs-6 text-muted">ናጻ ናይ ትግርኛ መምሃሪ መጻሕፍቲ</p>
     </div>
   </section>
 
-  <main>
+  <main style="margin-bottom: 3rem;">
     <div class="container">
       <!-- Available Books Section -->
       <div class="category-section">
-        <h2 class="category-title">📖 Available Now</h2>
+        <h2 class="category-title">📖</h2>
         <div class="row">
           <div class="col-lg-4 col-md-6">
             <div class="book-card">
               <div class="book-cover">
-                <span>🔤</span>
+                <span>ሀ</span>
               </div>
-              <h4>Tigrinya Alphabet Book</h4>
-              <p class="text-muted">Learn all 33 Tigrinya letters with pronunciation guides and practice exercises.</p>
+              <h4>መጽሓፍ ፊደላት ትግርኛ</h4>
+              <p class="text-muted">መምሃሪ 33 ፊደላት ትግርኛ</p>
               <ul class="list-unstyled">
-                <li>✅ 33 Tigrinya letters</li>
-                <li>✅ Pronunciation guide</li>
-                <li>✅ Practice exercises</li>
-                <li>✅ Audio examples</li>
+                <li>✅ 33 መሰረታውያን ፊደላት ትግርኛ</li>
+                <li>✅ መላመዲ</li>
               </ul>
-              <a href="#" class="download-btn">📥 Download PDF</a>
+              <div class="coming-soon">
+                <h5>⏳ ኣብ ቀረባ ግዜ</h5>
+                <p>እዚ መምሃሪ እዚ ኣብ መስርሕ እዩ ዘሎ። ድሕሪ ሓጺር ግዜ ኣብዚ ክዝርጋሕን ክትጥቀምሉን ኢኹም!</p>
+              </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
@@ -143,15 +145,18 @@
               <div class="book-cover">
                 <span>🎨</span>
               </div>
-              <h4>Colors & Shapes</h4>
-              <p class="text-muted">Learn Tigrinya words for colors and shapes with beautiful illustrations.</p>
+              <h4>ሕብርታትን ቅርጽታትን</h4>
+              <p class="text-muted">ብስእልታት ብዝተሰነየ መንገዲ ቃላት ሕብርን ቅርጽታትን ተመሃር</p>
               <ul class="list-unstyled">
-                <li>✅ 12 basic colors</li>
-                <li>✅ Common shapes</li>
-                <li>✅ Interactive exercises</li>
-                <li>✅ Coloring pages</li>
+                <li>✅ 11 ሕብርታት</li>
+                <li>✅ መሰረታውያን ቅርጽታት</li>
+                <li>✅ መላመዲ</li>
+                <li>✅ ኣንቢብካ ሕብሪ ምልካይ</li>
               </ul>
-              <a href="#" class="download-btn">📥 Download PDF</a>
+              <div class="coming-soon">
+                <h5>⏳ ኣብ ቀረባ ግዜ</h5>
+                <p>እዚ መምሃሪ እዚ ኣብ መስርሕ እዩ ዘሎ። ድሕሪ ሓጺር ግዜ ኣብዚ ክዝርጋሕን ክትጥቀምሉን ኢኹም!</p>
+              </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
@@ -159,34 +164,37 @@
               <div class="book-cover">
                 <span>🔢</span>
               </div>
-              <h4>Numbers 1-20</h4>
-              <p class="text-muted">Master Tigrinya numbers with counting exercises and number recognition.</p>
+              <h4>ቁጽርታት 1-20</h4>
+              <p class="text-muted">ትምህርቲ ቅርጽታት ብትግርኛ ምንባብን ምጽሓፍን</p>
               <ul class="list-unstyled">
-                <li>✅ Numbers 1-20</li>
-                <li>✅ Counting exercises</li>
-                <li>✅ Number recognition</li>
-                <li>✅ Math activities</li>
+                <li>✅ ቁጽርታት 1-20</li>
+                <li>✅ ልምምድ ምቁጻር</li>
+                <li>✅ ምልላይ ቁጽርታት</li>
+                <li>✅ ምጉዳል፡ ምድማር፡ ምርባሕ ከምኡ ውን ምምቃል</li>
               </ul>
-              <a href="#" class="download-btn">📥 Download PDF</a>
+              <div class="coming-soon">
+                <h5>⏳ ኣብ ቀረባ ግዜ</h5>
+                <p>እዚ መምሃሪ እዚ ኣብ መስርሕ እዩ ዘሎ። ድሕሪ ሓጺር ግዜ ኣብዚ ክዝርጋሕን ክትጥቀምሉን ኢኹም!</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Coming Soon Section -->
+      <!-- ኣብ ቀረባ ግዜ Section -->
       <div class="category-section">
-        <h2 class="category-title">🚀 Coming Soon</h2>
+        <h2 class="category-title"></h2>
         <div class="row">
           <div class="col-lg-4 col-md-6">
             <div class="book-card">
               <div class="book-cover">
                 <span>👨‍👩‍👧‍👦</span>
               </div>
-              <h4>Family & Friends</h4>
-              <p class="text-muted">Learn family relationships and friendship vocabulary in Tigrinya.</p>
+              <h4>ቤተ-ሰብን ዓርከ መሓዛን</h4>
+              <p class="text-muted">ዝምድናታትን ምሕዝነትን ተመሃር</p>
               <div class="coming-soon">
-                <h5>⏳ Coming Soon</h5>
-                <p>This book is currently in development and will be available soon!</p>
+                <h5>⏳ ኣብ ቀረባ ግዜ</h5>
+                <p>እዚ መምሃሪ እዚ ኣብ መስርሕ እዩ ዘሎ። ድሕሪ ሓጺር ግዜ ኣብዚ ክዝርጋሕን ክትጥቀምሉን ኢኹም!</p>
               </div>
             </div>
           </div>
@@ -195,11 +203,11 @@
               <div class="book-cover">
                 <span>🏠</span>
               </div>
-              <h4>Home & Daily Life</h4>
-              <p class="text-muted">Essential vocabulary for household items and daily activities.</p>
+              <h4>ቤትን መዓልታዊ ንጥፈታትን</h4>
+              <p class="text-muted">መሰረታውያን ናይ ገዛ ኣቕሑን፡ ንጥፈታትን ቃላት</p>
               <div class="coming-soon">
-                <h5>⏳ Coming Soon</h5>
-                <p>This book is currently in development and will be available soon!</p>
+                <h5>⏳ ኣብ ቀረባ ግዜ</h5>
+                <p>እዚ መምሃሪ እዚ ኣብ መስርሕ እዩ ዘሎ። ድሕሪ ሓጺር ግዜ ኣብዚ ክዝርጋሕን ክትጥቀምሉን ኢኹም!</p>
               </div>
             </div>
           </div>
@@ -208,95 +216,16 @@
               <div class="book-cover">
                 <span>🌍</span>
               </div>
-              <h4>Nature & Animals</h4>
-              <p class="text-muted">Discover Tigrinya words for animals, plants, and natural phenomena.</p>
+              <h4>ተፈጥሮን እንስሳታትን</h4>
+              <p class="text-muted">ኣስማት ተፈጥሮን እንስሳታትን ተመሃር</p>
               <div class="coming-soon">
-                <h5>⏳ Coming Soon</h5>
-                <p>This book is currently in development and will be available soon!</p>
+                <h5>⏳ ኣብ ቀረባ ግዜ</h5>
+                <p>እዚ መምሃሪ እዚ ኣብ መስርሕ እዩ ዘሎ። ድሕሪ ሓጺር ግዜ ኣብዚ ክዝርጋሕን ክትጥቀምሉን ኢኹም!</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- How to Use Section -->
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="book-card">
-            <h3 class="text-center mb-4">📖 How to Use These Books</h3>
-            <div class="row">
-              <div class="col-md-4">
-                <div class="text-center">
-                  <span class="feature-icon" style="font-size: 3rem; display: block; margin-bottom: 1rem;">📥</span>
-                  <h5>Download</h5>
-                  <p>Click the download button to get your free PDF copy of any available book.</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="text-center">
-                  <span class="feature-icon" style="font-size: 3rem; display: block; margin-bottom: 1rem;">🖨️</span>
-                  <h5>Print</h5>
-                  <p>Print the books at home or at a local print shop for offline learning.</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="text-center">
-                  <span class="feature-icon" style="font-size: 3rem; display: block; margin-bottom: 1rem;">📱</span>
-                  <h5>Use on Devices</h5>
-                  <p>View the books on tablets, phones, or computers for digital learning.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Learning Tips -->
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="book-card">
-            <h4>💡 Learning Tips</h4>
-            <ul>
-              <li>Start with the alphabet book to build a strong foundation</li>
-              <li>Practice daily for 15-20 minutes</li>
-              <li>Use the books alongside our interactive quizzes</li>
-              <li>Encourage your child to read aloud</li>
-              <li>Make learning fun with games and activities</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="book-card">
-            <h4>🎯 Learning Goals</h4>
-            <ul>
-              <li>Recognize all 33 Tigrinya letters</li>
-              <li>Learn basic vocabulary (100+ words)</li>
-              <li>Understand simple sentence structure</li>
-              <li>Build confidence in reading Tigrinya</li>
-              <li>Connect with cultural heritage</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Support Section -->
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="book-card text-center">
-            <h3>Need Help?</h3>
-            <p class="lead">If you have questions about using these books or need additional support, we're here to help!</p>
-            <div class="row justify-content-center">
-              <div class="col-md-4">
-                <a href="parents.html" class="download-btn me-3">👨‍👩‍👧‍👦 Parent Resources</a>
-              </div>
-              <div class="col-md-4">
-                <a href="contact.html" class="download-btn">📞 Contact Us</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </main>
 
   <!-- Footer -->
