@@ -48,29 +48,29 @@
     </div>
   </nav>
 
-  <main class="py-5" style="background: var(--surface); min-height: calc(100vh - 200px);">
+ <!-- <main class="py-5" style="background: var(--surface); min-height: calc(100vh - 200px);">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-7">
+        <div class="col-md-8 col-lg-7"> -->
           <!-- Quiz Card -->
-          <div class="card shadow quiz-card border-0" id="quizCard">
-            <div class="card-body p-4">
+          <!-- <div class="card shadow quiz-card border-0" id="quizCard">
+            <div class="card-body p-4"> -->
               <!-- Header -->
-              <div class="d-flex align-items-center justify-content-between mb-4">
+              <!-- <div class="d-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 m-0 quiz-title">✅ ሓቂ ወይ ሓሶት</h1>
                 <div class="quiz-meta d-flex align-items-center gap-2">
                   <button id="soundToggle" class="btn btn-outline-secondary btn-sm" title="Toggle Sounds">🔊</button>
                   <span class="badge bg-primary fs-6">Question <span id="qIndex">1</span>/<span id="qTotal">5</span></span>
                 </div>
-              </div>
+              </div> -->
 
               <!-- Progress Bar -->
-              <div class="progress mb-4" style="height: 8px; border-radius: 10px;">
+              <!-- <div class="progress mb-4" style="height: 8px; border-radius: 10px;">
                 <div class="progress-bar quiz-progress" role="progressbar" style="width: 0%; background: linear-gradient(90deg, #ff6b6b, #4ecdc4);"></div>
-              </div>
+              </div> -->
 
               <!-- Question Area -->
-              <div class="quiz-content">
+              <!-- <div class="quiz-content">
                 <div id="questionArea" class="text-center py-3">
                   <div class="statement" id="stmt">"ቤት means house"</div>
                 </div>
@@ -78,15 +78,15 @@
                   <button class="btn btn-outline-success answer-btn" data-val="true">✅ ሓቂ</button>
                   <button class="btn btn-outline-danger answer-btn" data-val="false">❌ ሓሶት</button>
                 </div>
-              </div>
+              </div> -->
 
               <!-- Feedback Area -->
-              <div class="quiz-feedback text-center mt-4" aria-live="polite"></div>
+              <!-- <div class="quiz-feedback text-center mt-4" aria-live="polite"></div>
             </div>
-          </div>
+          </div> -->
 
           <!-- Results Card -->
-          <div id="result" class="card shadow result-card border-0 mt-4 d-none">
+          <!-- <div id="result" class="card shadow result-card border-0 mt-4 d-none">
             <div class="card-body text-center p-5">
               <div class="result-icon mb-3">🏆</div>
               <h2 class="h3 mb-3 result-title">ጽቡቕ ስራሕ!</h2>
@@ -101,91 +101,91 @@
         </div>
       </div>
     </div>
-  </main>
+  </main> -->
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../js/soundConfig.js"></script>
   <script src="../js/quizApp.js"></script>
-  <script>
+  <script>  -->
     // Quiz data
-    const questions = [
-      { meta: { stmt: '"ቤት means house"' }, correct: 'true', choices: ['true','false'] },
-      { meta: { stmt: '"መኪና means lion"' }, correct: 'false', choices: ['true','false'] },
-      { meta: { stmt: '"ኣንበሳ means lion"' }, correct: 'true', choices: ['true','false'] },
-      { meta: { stmt: '"ቱፋሕ is apple"' }, correct: 'true', choices: ['true','false'] },
-      { meta: { stmt: '"ሰማያዊ is green"' }, correct: 'false', choices: ['true','false'] },
-    ];
+    // const questions = [
+    //   { meta: { stmt: '"ቤት means house"' }, correct: 'true', choices: ['true','false'] },
+    //   { meta: { stmt: '"መኪና means lion"' }, correct: 'false', choices: ['true','false'] },
+    //   { meta: { stmt: '"ኣንበሳ means lion"' }, correct: 'true', choices: ['true','false'] },
+    //   { meta: { stmt: '"ቱፋሕ is apple"' }, correct: 'true', choices: ['true','false'] },
+    //   { meta: { stmt: '"ሰማያዊ is green"' }, correct: 'false', choices: ['true','false'] },
+    // ];
 
-    // DOM elements
-    const qIndexEl = document.getElementById('qIndex');
-    const qTotalEl = document.getElementById('qTotal');
-    const stmtEl = document.getElementById('stmt');
-    const answersEl = document.getElementById('answers');
-    const resultCard = document.getElementById('result');
-    const quizCard = document.getElementById('quizCard');
-    const scoreLine = document.getElementById('scoreLine');
-    const timeLine = document.getElementById('timeLine');
-    const restartBtn = document.getElementById('restartBtn');
+    // // DOM elements
+    // const qIndexEl = document.getElementById('qIndex');
+    // const qTotalEl = document.getElementById('qTotal');
+    // const stmtEl = document.getElementById('stmt');
+    // const answersEl = document.getElementById('answers');
+    // const resultCard = document.getElementById('result');
+    // const quizCard = document.getElementById('quizCard');
+    // const scoreLine = document.getElementById('scoreLine');
+    // const timeLine = document.getElementById('timeLine');
+    // const restartBtn = document.getElementById('restartBtn');
 
-    // Set the total number of questions dynamically
-    qTotalEl.textContent = questions.length;
+    // // Set the total number of questions dynamically
+    // qTotalEl.textContent = questions.length;
 
-    // Initialize quiz
-    let appInstance = quizApp({
-      questions,
-      hooks: {
-        setHeader: (idx, total) => {
-          qIndexEl.textContent = idx;
-        },
-        renderPrompt: (q) => {
-          stmtEl.textContent = q.meta.stmt;
-        },
-        renderChoices: (q, onPick) => {
-          // Clear existing buttons
-          answersEl.innerHTML = '';
+    // // Initialize quiz
+    // let appInstance = quizApp({
+    //   questions,
+    //   hooks: {
+    //     setHeader: (idx, total) => {
+    //       qIndexEl.textContent = idx;
+    //     },
+    //     renderPrompt: (q) => {
+    //       stmtEl.textContent = q.meta.stmt;
+    //     },
+    //     renderChoices: (q, onPick) => {
+    //       // Clear existing buttons
+    //       answersEl.innerHTML = '';
           
-          // Create True button
-          const trueBtn = document.createElement('button');
-          trueBtn.className = 'btn btn-outline-success answer-btn';
-          trueBtn.textContent = '✅ ሓቂ';
-          trueBtn.addEventListener('click', () => onPick('true'));
-          answersEl.appendChild(trueBtn);
+    //       // Create True button
+    //       const trueBtn = document.createElement('button');
+    //       trueBtn.className = 'btn btn-outline-success answer-btn';
+    //       trueBtn.textContent = '✅ ሓቂ';
+    //       trueBtn.addEventListener('click', () => onPick('true'));
+    //       answersEl.appendChild(trueBtn);
           
-          // Create False button
-          const falseBtn = document.createElement('button');
-          falseBtn.className = 'btn btn-outline-danger answer-btn';
-          falseBtn.textContent = '❌ ሓሶት';
-          falseBtn.addEventListener('click', () => onPick('false'));
-          answersEl.appendChild(falseBtn);
-        },
-        finish: (score, total, percentage, timeTaken) => {
-          quizCard.classList.add('d-none');
-          resultCard.classList.remove('d-none');
+    //       // Create False button
+    //       const falseBtn = document.createElement('button');
+    //       falseBtn.className = 'btn btn-outline-danger answer-btn';
+    //       falseBtn.textContent = '❌ ሓሶት';
+    //       falseBtn.addEventListener('click', () => onPick('false'));
+    //       answersEl.appendChild(falseBtn);
+    //     },
+    //     finish: (score, total, percentage, timeTaken) => {
+    //       quizCard.classList.add('d-none');
+    //       resultCard.classList.remove('d-none');
           
-          // Update score
-          scoreLine.textContent = `${score} ካብ ${total} ቅኑዕ መሊስካ/ኪ! (${percentage}%)`;
+    //       // Update score
+    //       scoreLine.textContent = `${score} ካብ ${total} ቅኑዕ መሊስካ/ኪ! (${percentage}%)`;
           
-          // Update time
-          const timeText = timeTaken.minutes > 0
-            ? `${timeTaken.minutes}ደቓይቅ ${timeTaken.seconds}ካልኢት/ታት`
-            : `${timeTaken.seconds}ካልኢት/ታት`;
-          timeLine.textContent = `ንውሓት ግዜ: ${timeText}`;
+    //       // Update time
+    //       const timeText = timeTaken.minutes > 0
+    //         ? `${timeTaken.minutes}ደቓይቅ ${timeTaken.seconds}ካልኢት/ታት`
+    //         : `${timeTaken.seconds}ካልኢት/ታት`;
+    //       timeLine.textContent = `ንውሓት ግዜ: ${timeText}`;
           
-          // Add celebration animation
-          resultCard.classList.add('celebrate');
-        }
-      }
-    });
+    //       // Add celebration animation
+    //       resultCard.classList.add('celebrate');
+    //     }
+    //   }
+    // });
 
-    // Restart functionality
-    restartBtn.addEventListener('click', () => {
-      quizCard.classList.remove('d-none');
-      resultCard.classList.add('d-none');
-      resultCard.classList.remove('celebrate');
-      appInstance.restart();
-    });
-  </script>
+    // // Restart functionality
+    // restartBtn.addEventListener('click', () => {
+    //   quizCard.classList.remove('d-none');
+    //   resultCard.classList.add('d-none');
+    //   resultCard.classList.remove('celebrate');
+    //   appInstance.restart();
+    // });
+  </script> 
 
   <!-- Footer -->
   <footer class="site-footer">
