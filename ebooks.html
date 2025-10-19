@@ -25,6 +25,8 @@
       margin: 1.5rem 0;
       transition: transform 0.3s ease;
       height: 100%;
+      display: flex;
+      flex-direction: column;
     }
     
     .book-card:hover {
@@ -103,6 +105,43 @@
       color: #2c3e50;
       margin-bottom: 1.5rem;
     }
+    
+    /* Card content area - pushes bottom sections down */
+    .book-card > *:not(.download-section):not(.coming-soon) {
+      flex: 0 0 auto;
+    }
+    
+    /* Bottom sections - pushes to bottom */
+    .download-section,
+    .coming-soon {
+      margin-top: auto;
+      margin-bottom: 0;
+    }
+    
+    /* Button group styling */
+    .button-group {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .button-group .btn {
+      flex: 0 0 auto;
+      min-width: 120px;
+    }
+    
+    @media (max-width: 576px) {
+      .button-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .button-group .btn {
+        width: 100%;
+        max-width: 200px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -154,12 +193,17 @@
                 <li>✅ 31 መሰረታውያን ፊደላት ትግርኛ</li>
                 <li>✅ መላመዲ</li>
               </ul>
-              <div class="download-section">
-                <p>ነዚ መምሃሪ ፊደላት ትግርኛ ኣብዚ "ኣውርድ" ዝብል መልጎም ብምጥዋቅ ብናጻ ተመሃርሉ።</p>
-                <a href="pdf/ፊደላት ትግርኛ.pdf" download="ፊደላት ትግርኛ.pdf" class="btn btn-success btn-lg">
-                  <i class="fa fa-download"></i> ኣውርድ
-                </a>
-              </div>
+                <div class="download-section">
+                  <p>ነዚ መምሃሪ ፊደላት ትግርኛ ኣብዚ "ክፈት" ወይ "ኣውርድ" ዝብል መልጎም ብምጥዋቅ ብናጻ ተመሃርሉ።</p>
+                  <div class="button-group">
+                    <a href="pdf/ፊደላት ትግርኛ.pdf" target="_blank" class="btn btn-primary btn-lg me-2">
+                      <i class="fa fa-eye"></i> ክፈት
+                    </a>
+                    <a href="pdf/ፊደላት ትግርኛ.pdf" download="ፊደላት ትግርኛ.pdf" class="btn btn-success btn-lg">
+                      <i class="fa fa-download"></i> ኣውርድ
+                    </a>
+                  </div>
+                </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
@@ -170,15 +214,22 @@
               <h4>ሕብርታትን ቅርጽታትን</h4>
               <p class="text-muted">ብስእልታት ብዝተሰነየ መንገዲ ቃላት ሕብርን ቅርጽታትን ተመሃር</p>
               <ul class="list-unstyled">
-                <li>✅ 11 ሕብርታት</li>
+                <li>✅ 10 ሕብርታት</li>
                 <li>✅ መሰረታውያን ቅርጽታት</li>
                 <li>✅ መላመዲ</li>
-                <li>✅ ኣንቢብካ ሕብሪ ምልካይ</li>
+                <li>✅ ባዶ ቦታ ምላእ</li>
               </ul>
-              <div class="coming-soon">
-                <h5>⏳ ኣብ ቀረባ ግዜ</h5>
-                <p>እዚ መምሃሪ እዚ ኣብ መስርሕ እዩ ዘሎ። ድሕሪ ሓጺር ግዜ ኣብዚ ክዝርጋሕን ክትጥቀምሉን ኢኹም!</p>
-              </div>
+                <div class="download-section">
+                  <p>ነዚ መምሃሪ ሕብርታትን ቅርጽታትን ኣብዚ "ክፈት" ወይ "ኣውርድ" ዝብል መልጎም ብምጥዋቅ ብናጻ ተመሃርሉ።</p>
+                  <div class="button-group">
+                    <a href="pdf/ሕብርታትን-ቅርጽታትን.pdf" target="_blank" class="btn btn-primary btn-lg me-2">
+                      <i class="fa fa-eye"></i> ክፈት
+                    </a>
+                    <a href="pdf/ሕብርታትን-ቅርጽታትን.pdf" download="ሕብርታትን-ቅርጽታትን.pdf" class="btn btn-success btn-lg">
+                      <i class="fa fa-download"></i> ኣውርድ
+                    </a>
+                  </div>
+                </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
