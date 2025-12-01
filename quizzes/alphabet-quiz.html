@@ -10,6 +10,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../css/style.css">
+  <script data-goatcounter="https://mesmertigrinya.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
   <style>
     .alphabet-grid {
       background: linear-gradient(135deg, #ffeef8, #f0f8ff);
@@ -38,7 +40,7 @@
     
     .vowel-headers {
       display: grid;
-      grid-template-columns: repeat(7, 1fr);
+      grid-template-columns: repeat(7, minmax(0, 1fr));
       gap: 0.5rem;
       margin-bottom: 1rem;
     }
@@ -52,11 +54,12 @@
       font-weight: 600;
       font-size: 0.9rem;
       box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      min-width: 0;
     }
     
     .alphabet-row {
       display: grid;
-      grid-template-columns: repeat(7, 1fr);
+      grid-template-columns: repeat(7, minmax(0, 1fr));
       gap: 0.5rem;
       margin-bottom: 0.5rem;
     }
@@ -64,40 +67,33 @@
     .letter-card {
       background: white;
       border-radius: 12px;
-      padding: 1rem 0.5rem;
+      padding: 0.9rem 0.5rem;
       text-align: center;
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 3px 8px rgba(0,0,0,0.1);
       border: 2px solid transparent;
-      min-height: 80px;
+      min-height: 72px;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
     
-    .letter-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-      border-color: var(--brand-secondary);
-    }
-    
-    .letter-card:active {
-      transform: translateY(-1px);
-    }
-    
-    .letter-card.playing {
-      animation: letterPulse 0.6s ease-in-out;
-      background: linear-gradient(135deg, #4ecdc4, #ff6b6b);
-      color: white;
-    }
-    
     .tigrinya-char {
-      font-size: 1.8rem;
+      font-size: clamp(1.1rem, 3.8vw, 1.8rem);
       font-weight: 700; 
       color: var(--brand);
       margin-bottom: 0.3rem;
       line-height: 1; 
+    }
+    
+    /* Small-screen tweaks so the 7 columns stay in one row and remain usable */
+    @media (max-width: 480px) {
+      .vowel-headers, .alphabet-row { gap: 0.35rem; }
+      .vowel-header { padding: 0.5rem 0.35rem; font-size: 0.85rem; }
+      .letter-card { padding: 0.5rem 0.35rem; min-height: 56px; }
+      .group-title { font-size: 1.05rem; }
     }
     
     .pronunciation {
@@ -210,7 +206,7 @@
           <li class="nav-item"><a class="nav-link" href="../stories.html">ዛንታታት</a></li>
           <li class="nav-item"><a class="nav-link" href="../parents.html">ንወለዲ</a></li>
           <li class="nav-item"><a class="nav-link" href="../ebooks.html">መምሃሪ መጻሕፍቲ</a></li>
-          <li class="nav-item"><a class="nav-link" href="../contact.html">ኣብ ርክብ ንኺድ</a></li>
+          <li class="nav-item"><a class="nav-link" href="../contact.html">ርኸቡና</a></li>
         </ul>
       </div>
     </div>
@@ -221,14 +217,13 @@
     <div class="container">
       <!-- Page Header -->
       <div class="page-title">
-        <h1 class="display-4 fw-bold">🔤 ፊደላት ትግርኛ</h1>
-        <p class="page-subtitle">ንፊደላት ትግርኛ ተማሃሩ እሞ ንድምጾም ሰምዑ</p>
+        <h1 class="display-4 fw-bold">ፊደላት ትግርኛ</h1>
               </div>
 
       <!-- Instructions -->
       <div class="instructions">
-        <h4>🎯 እንታይ ክትገብር ኣሎካ</h4>
-        <p>ንፊደል ኣብ ላዕሊ ጠውቕ እሞ ንድምጹ ሰምዕ! ኣብ ታሕተዋይ ክፋል እቲ ፊደል እተመርጸ ክርአ እዩ።</p>
+        <h4>🎯 መምርሒ</h4>
+        <p>ነቶም ፊደላት ብምጥዋቅ ኣደማምጸኦም ተመሃሩ</p>
               </div>
 
 
@@ -236,7 +231,6 @@
       <div class="alphabet-grid">
         <div class="grid-header">
           <h2 class="grid-title">ፊደላት ትግርኛ - Tigrinya Alphabet</h2>
-          <p class="grid-subtitle">ንፊደላት ተማሃሩ እሞ ንድምጾም ሰምዑ</p>
           </div>
 
         <!-- Vowel Headers -->
@@ -347,7 +341,6 @@
             
             card.innerHTML = `
               <div class="tigrinya-char">${letterData.forms[i]}</div>
-              <div class="pronunciation">${letterData.sounds[i]}</div>
             `;
             card.dataset.letter = letterData.forms[i];
             card.dataset.pronunciation = letterData.sounds[i];
