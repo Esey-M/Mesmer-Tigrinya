@@ -40,7 +40,7 @@
     
     .vowel-headers {
       display: grid;
-      grid-template-columns: repeat(7, 1fr);
+      grid-template-columns: repeat(7, minmax(0, 1fr));
       gap: 0.5rem;
       margin-bottom: 1rem;
     }
@@ -54,11 +54,12 @@
       font-weight: 600;
       font-size: 0.9rem;
       box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      min-width: 0;
     }
     
     .alphabet-row {
       display: grid;
-      grid-template-columns: repeat(7, 1fr);
+      grid-template-columns: repeat(7, minmax(0, 1fr));
       gap: 0.5rem;
       margin-bottom: 0.5rem;
     }
@@ -66,40 +67,33 @@
     .letter-card {
       background: white;
       border-radius: 12px;
-      padding: 1rem 0.5rem;
+      padding: 0.9rem 0.5rem;
       text-align: center;
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 3px 8px rgba(0,0,0,0.1);
       border: 2px solid transparent;
-      min-height: 80px;
+      min-height: 72px;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
     
-    .letter-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-      border-color: var(--brand-secondary);
-    }
-    
-    .letter-card:active {
-      transform: translateY(-1px);
-    }
-    
-    .letter-card.playing {
-      animation: letterPulse 0.6s ease-in-out;
-      background: linear-gradient(135deg, #4ecdc4, #ff6b6b);
-      color: white;
-    }
-    
     .tigrinya-char {
-      font-size: 1.8rem;
+      font-size: clamp(1.1rem, 3.8vw, 1.8rem);
       font-weight: 700; 
       color: var(--brand);
       margin-bottom: 0.3rem;
       line-height: 1; 
+    }
+    
+    /* Small-screen tweaks so the 7 columns stay in one row and remain usable */
+    @media (max-width: 480px) {
+      .vowel-headers, .alphabet-row { gap: 0.35rem; }
+      .vowel-header { padding: 0.5rem 0.35rem; font-size: 0.85rem; }
+      .letter-card { padding: 0.5rem 0.35rem; min-height: 56px; }
+      .group-title { font-size: 1.05rem; }
     }
     
     .pronunciation {
