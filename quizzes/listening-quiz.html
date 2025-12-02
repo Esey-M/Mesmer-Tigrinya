@@ -114,6 +114,7 @@
   <script src="../js/soundConfig.js"></script>
   <script src="../js/quizApp.js"></script>
   <script>
+<<<<<<< Updated upstream
     // Quiz data (placeholder audio files)
     const questions = [
       { correct: 'ቤት', choices: ['ቤት','መርሓ','ሓሳብ','ማእከል'], meta: { audio: '../audio/bet.mp3' } },
@@ -121,6 +122,29 @@
       { correct: 'ሓሳብ', choices: ['ማእከል','ሓሳብ','መርሓ','ቤት'], meta: { audio: '../audio/hasab.mp3' } },
       { correct: 'ማእከል', choices: ['ጸሓፊ','ማእከል','ቤት','መርሓ'], meta: { audio: '../audio/maekel.mp3' } },
       { correct: 'ጸሓፊ', choices: ['መርሓ','ሓሳብ','ጸሓፊ','ማእከል'], meta: { audio: '../audio/tsehafI.mp3' } },
+=======
+    // Quiz data (Tigrinya listening comprehension questions)
+    const questions = [
+      // Basic Level - Alphabet Sounds
+      { correct: 'ሀ', choices: ['ሀ','ለ','ሐ','መ'], meta: { audio: '../audio/listening/ha.mp3' } },
+      { correct: 'መ', choices: ['መ','ረ','ሰ','ሀ'], meta: { audio: '../audio/listening/me.mp3' } },
+      { correct: 'ረ', choices: ['ረ','መ','ሰ','በ'], meta: { audio: '../audio/listening/re.mp3' } },
+      { correct: 'ሰ', choices: ['ሰ','ሸ','ቀ','በ'], meta: { audio: '../audio/listening/se.mp3' } },
+
+      // Intermediate Level - Common Words
+      { correct: 'ቤት', choices: ['ቤት','መርሓ','ሓሳብ','ማእከል'], meta: { audio: '../audio/listening/bet.mp3' } },
+      { correct: 'መርሓ', choices: ['መርሓ','ቤት','ጸሓፊ','ሓሳብ'], meta: { audio: '../audio/listening/merha.mp3' } },
+      { correct: 'ሰላም', choices: ['ሰላም','ሰላማት','ሰላምታ','ሰላምን'], meta: { audio: '../audio/listening/selam.mp3' } },
+      { correct: 'ወለዲ', choices: ['ወለዲ','ወለዶ','ወለዳ','ወለድ'], meta: { audio: '../audio/listening/weledi.mp3' } },
+      { correct: 'ማእከል', choices: ['ማእከል','ማእከላት','ማእከልን','ማእከልያ'], meta: { audio: '../audio/listening/maekel.mp3' } },
+
+      // Advanced Level - Simple Phrases
+      { correct: 'እቲ ቤት', choices: ['እቲ ቤት','እቲ መርሓ','እቲ ሓሳብ','እቲ ማእከል'], meta: { audio: '../audio/listening/iti-bet.mp3' } },
+      { correct: 'ሰላም ኣሎ', choices: ['ሰላም ኣሎ','ሰላም ኣለኺ','ሰላም ኣለኪ','ሰላም ኣለካ'], meta: { audio: '../audio/listening/selam-allo.mp3' } },
+      { correct: 'ኣብ መርሓ', choices: ['ኣብ መርሓ','ኣብ ቤት','ኣብ ማእከል','ኣብ ሓሳብ'], meta: { audio: '../audio/listening/ab-merha.mp3' } },
+      { correct: 'ንወለዲ', choices: ['ንወለዲ','ንወለዶ','ንወለዳ','ንወለድ'], meta: { audio: '../audio/listening/neweldi.mp3' } },
+      { correct: 'ትግርኛ', choices: ['ትግርኛ','ትግርኛዊ','ትግርኛታት','ትግርኛን'], meta: { audio: '../audio/listening/tigrinya.mp3' } }
+>>>>>>> Stashed changes
     ];
 
     // DOM elements
@@ -199,8 +223,13 @@
       resultCard.classList.add('d-none');
       resultCard.classList.remove('celebrate');
       appInstance.restart();
+<<<<<<< Updated upstream
     });
   </script>
+=======
+    }); 
+  </script> 
+>>>>>>> Stashed changes
 
   <!-- Footer -->
   <footer class="site-footer">
