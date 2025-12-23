@@ -5,22 +5,22 @@
 
 /* Enhanced theme variables */
 :root {
-  --bg: #f6f6f6;
-  --surface: #f4dcc6;
-  --surface-strong: #f6e4d4;
-  --brand: #ff6b6b;           /* Bright, kid-friendly red */
-  --brand-secondary: #4ecdc4; /* Bright teal */
+  --bg: #ffffff;
+  --surface: #f8f9fa;
+  --surface-strong: #e9ecef;
+  --brand: #ff6b6b;           /* Vibrant red */
+  --brand-secondary: #4ecdc4; /* Teal */
   --brand-rgb: 255, 107, 107;
   --text: #2c3e50;
-  --muted: #7f8c8d;
-  --success: #2ecc71;
-  --warning: #f39c12;
-  --error: #e74c3c;
+  --muted: #6c757d;
+  --success: #28a745;
+  --warning: #ffc107;
+  --error: #dc3545;
   --card-shadow: 0 15px 35px rgba(0,0,0,0.1);
   --bs-primary: var(--brand);
   --bs-primary-rgb: var(--brand-rgb);
   
-  /* Kid-friendly colors */
+  /* Color palette */
   --rainbow-1: #ff6b6b;
   --rainbow-2: #4ecdc4;
   --rainbow-3: #45b7d1;
@@ -74,10 +74,11 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Navbar */
 .navbar {
-  background: linear-gradient(135deg, #ff8c00, #ff6b6b) !important;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   padding: 1rem 0;
   transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .navbar-brand {
@@ -118,15 +119,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-nav .nav-link:hover {
   color: #fff !important;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .navbar-nav .nav-link.active {
   color: #fff !important;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   font-weight: 600;
+  border-bottom: 2px solid var(--brand-secondary);
 }
 
 .navbar-toggler {
@@ -168,7 +170,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hero section */
 .home-hero { 
-  background: linear-gradient(135deg, var(--surface) 0%, #fde9d5 50%, #fff5e6 100%); 
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f5 100%); 
   overflow: hidden; 
   position: relative;
 }
@@ -186,6 +188,45 @@ h1, h2, h3, h4, h5, h6 {
 .hero-sub { 
   color: var(--muted); 
   font-size: 1.2rem;
+}
+
+.hero-tigrinya-text {
+  font-family: 'Fredoka One', cursive;
+  font-size: 8rem;
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--brand), var(--brand-secondary), var(--rainbow-3), var(--rainbow-5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  animation: pulse-text 3s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+@keyframes pulse-text {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-tigrinya-text {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-tigrinya-text {
+    font-size: 4rem;
+  }
 }
 
 /* Floating animations */
@@ -260,24 +301,26 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Categories */
 .categories { 
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+  background: linear-gradient(135deg, #495057 0%, #6c757d 100%); 
 }
 
 .category-card { 
   text-decoration: none; 
   color: #fff; 
-  background: linear-gradient(45deg, var(--brand), var(--brand-secondary)); 
+  background: linear-gradient(135deg, var(--brand), var(--brand-secondary)); 
   padding: 0; 
   border-radius: 25px; 
   box-shadow: var(--card-shadow); 
   transition: all 0.3s ease; 
   transform: translateY(0);
   overflow: hidden;
+  border: none;
 }
 
 .category-card:hover { 
   transform: translateY(-8px) scale(1.02); 
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  background: linear-gradient(135deg, var(--brand-secondary), var(--brand));
 }
 
 .category-img { 
@@ -297,6 +340,41 @@ h1, h2, h3, h4, h5, h6 {
   object-position: center;
   display: block;
   border-radius: 0;
+}
+
+.category-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: 'Fredoka One', cursive;
+  text-align: center;
+  padding: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 992px) {
+  .category-placeholder {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-placeholder {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .category-placeholder {
+    font-size: 1.75rem;
+  }
 }
 
 .category-card:hover .category-img {
@@ -711,28 +789,36 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Carousel */
-.carousel-section { 
-  background: linear-gradient(135deg, #fff7ef 0%, #f0f8ff 100%); 
+.carousel-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); 
 }
 
-#kidsCarousel .carousel-item img { 
+#mainCarousel .carousel-item img { 
   height: 450px; 
   object-fit: cover; 
+  object-position: center 30%;
   border-radius: 20px;
 }
 
 @media (max-width: 992px) { 
-  #kidsCarousel .carousel-item img { height: 350px; } 
+  #mainCarousel .carousel-item img { 
+    height: 350px; 
+    object-position: center 30%;
+  } 
 }
 
 @media (max-width: 576px) { 
-  #kidsCarousel .carousel-item img { height: 280px; } 
+  #mainCarousel .carousel-item img { 
+    height: 280px; 
+    object-position: center 30%;
+  } 
 }
 
 /* Footer */
 .site-footer { 
-  background: linear-gradient(45deg, var(--brand), var(--brand-secondary)); 
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%); 
   color: #fff; 
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-inner { 
@@ -756,8 +842,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-links a:hover {
-  color: #ffd700;
+  color: var(--brand-secondary);
   transform: translateY(-2px);
+  text-decoration: underline;
 }
 
 .footer-social {
@@ -783,10 +870,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-social a:hover {
-  color: #ffd700;
+  color: var(--brand-secondary);
   transform: translateY(-3px) scale(1.1);
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  background: rgba(78, 205, 196, 0.2);
+  box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
 }
 
 .footer-copyright {
