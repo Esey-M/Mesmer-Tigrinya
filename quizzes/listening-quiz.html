@@ -10,6 +10,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../css/style.css">
+  <script data-goatcounter="https://mesmertigrinya.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
   <style>
     .audio-wrap { 
       display: flex; 
@@ -47,35 +49,35 @@
           <li class="nav-item"><a class="nav-link" href="../stories.html">ዛንታታት</a></li>
           <li class="nav-item"><a class="nav-link" href="../parents.html">ንወለዲ</a></li>
           <li class="nav-item"><a class="nav-link" href="../ebooks.html">መምሃሪ መጻሕፍቲ</a></li>
-          <li class="nav-item"><a class="nav-link" href="../contact.html">ኣብ ርክብ ንኺድ</a></li>
+          <li class="nav-item"><a class="nav-link" href="../contact.html">ርኸቡና</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <main class="py-5" style="background: var(--surface); min-height: calc(100vh - 200px);">
+  <!-- <main class="py-5" style="background: var(--surface); min-height: calc(100vh - 200px);">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-7">
+        <div class="col-md-8 col-lg-7"> -->
           <!-- Quiz Card -->
-          <div class="card shadow quiz-card border-0" id="quizCard">
-            <div class="card-body p-4">
+          <!-- <div class="card shadow quiz-card border-0" id="quizCard">
+            <div class="card-body p-4"> -->
               <!-- Header -->
-              <div class="d-flex align-items-center justify-content-between mb-4">
+              <!-- <div class="d-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 m-0 quiz-title">🎧 ምስማዕ ሕቶ</h1>
                 <div class="quiz-meta d-flex align-items-center gap-2">
                   <button id="soundToggle" class="btn btn-outline-secondary btn-sm" title="Toggle Sounds">🔊</button>
                   <span class="badge bg-primary fs-6">ሕቶ <span id="qIndex">1</span>/<span id="qTotal">5</span></span>
                 </div>
-              </div>
+              </div> -->
 
               <!-- Progress Bar -->
-              <div class="progress mb-4" style="height: 8px; border-radius: 10px;">
+              <!-- <div class="progress mb-4" style="height: 8px; border-radius: 10px;">
                 <div class="progress-bar quiz-progress" role="progressbar" style="width: 0%; background: linear-gradient(90deg, #ff6b6b, #4ecdc4);"></div>
-              </div>
+              </div> -->
 
               <!-- Question Area -->
-              <div class="quiz-content">
+              <!-- <div class="quiz-content">
                 <div id="questionArea" class="text-center py-3">
                   <p class="fs-5 mb-3">ሰምዕን ቅኑዕ ትግርኛ ቃል ምረጽ: 🎵</p>
                   <div class="audio-wrap">
@@ -84,15 +86,15 @@
                   </div>
                 </div>
                 <div id="answers" class="d-grid gap-3 mt-4"></div>
-              </div>
+              </div> -->
 
               <!-- Feedback Area -->
-              <div class="quiz-feedback text-center mt-4" aria-live="polite"></div>
+              <!-- <div class="quiz-feedback text-center mt-4" aria-live="polite"></div>
             </div>
-          </div>
+          </div> -->
 
           <!-- Results Card -->
-          <div id="result" class="card shadow result-card border-0 mt-4 d-none">
+          <!-- <div id="result" class="card shadow result-card border-0 mt-4 d-none">
             <div class="card-body text-center p-5">
               <div class="result-icon mb-3">🏆</div>
               <h2 class="h3 mb-3 result-title">ጽቡቕ ስራሕ!</h2>
@@ -107,44 +109,20 @@
         </div>
       </div>
     </div>
-  </main>
+  </main> -->
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../js/soundConfig.js"></script>
   <script src="../js/quizApp.js"></script>
-  <script>
-<<<<<<< Updated upstream
+  <script> -->
     // Quiz data (placeholder audio files)
-    const questions = [
+    <!-- const questions = [
       { correct: 'ቤት', choices: ['ቤት','መርሓ','ሓሳብ','ማእከል'], meta: { audio: '../audio/bet.mp3' } },
       { correct: 'መርሓ', choices: ['መርሓ','ቤት','ጸሓፊ','ሓሳብ'], meta: { audio: '../audio/merha.mp3' } },
       { correct: 'ሓሳብ', choices: ['ማእከል','ሓሳብ','መርሓ','ቤት'], meta: { audio: '../audio/hasab.mp3' } },
       { correct: 'ማእከል', choices: ['ጸሓፊ','ማእከል','ቤት','መርሓ'], meta: { audio: '../audio/maekel.mp3' } },
       { correct: 'ጸሓፊ', choices: ['መርሓ','ሓሳብ','ጸሓፊ','ማእከል'], meta: { audio: '../audio/tsehafI.mp3' } },
-=======
-    // Quiz data (Tigrinya listening comprehension questions)
-    const questions = [
-      // Basic Level - Alphabet Sounds
-      { correct: 'ሀ', choices: ['ሀ','ለ','ሐ','መ'], meta: { audio: '../audio/listening/ha.mp3' } },
-      { correct: 'መ', choices: ['መ','ረ','ሰ','ሀ'], meta: { audio: '../audio/listening/me.mp3' } },
-      { correct: 'ረ', choices: ['ረ','መ','ሰ','በ'], meta: { audio: '../audio/listening/re.mp3' } },
-      { correct: 'ሰ', choices: ['ሰ','ሸ','ቀ','በ'], meta: { audio: '../audio/listening/se.mp3' } },
-
-      // Intermediate Level - Common Words
-      { correct: 'ቤት', choices: ['ቤት','መርሓ','ሓሳብ','ማእከል'], meta: { audio: '../audio/listening/bet.mp3' } },
-      { correct: 'መርሓ', choices: ['መርሓ','ቤት','ጸሓፊ','ሓሳብ'], meta: { audio: '../audio/listening/merha.mp3' } },
-      { correct: 'ሰላም', choices: ['ሰላም','ሰላማት','ሰላምታ','ሰላምን'], meta: { audio: '../audio/listening/selam.mp3' } },
-      { correct: 'ወለዲ', choices: ['ወለዲ','ወለዶ','ወለዳ','ወለድ'], meta: { audio: '../audio/listening/weledi.mp3' } },
-      { correct: 'ማእከል', choices: ['ማእከል','ማእከላት','ማእከልን','ማእከልያ'], meta: { audio: '../audio/listening/maekel.mp3' } },
-
-      // Advanced Level - Simple Phrases
-      { correct: 'እቲ ቤት', choices: ['እቲ ቤት','እቲ መርሓ','እቲ ሓሳብ','እቲ ማእከል'], meta: { audio: '../audio/listening/iti-bet.mp3' } },
-      { correct: 'ሰላም ኣሎ', choices: ['ሰላም ኣሎ','ሰላም ኣለኺ','ሰላም ኣለኪ','ሰላም ኣለካ'], meta: { audio: '../audio/listening/selam-allo.mp3' } },
-      { correct: 'ኣብ መርሓ', choices: ['ኣብ መርሓ','ኣብ ቤት','ኣብ ማእከል','ኣብ ሓሳብ'], meta: { audio: '../audio/listening/ab-merha.mp3' } },
-      { correct: 'ንወለዲ', choices: ['ንወለዲ','ንወለዶ','ንወለዳ','ንወለድ'], meta: { audio: '../audio/listening/neweldi.mp3' } },
-      { correct: 'ትግርኛ', choices: ['ትግርኛ','ትግርኛዊ','ትግርኛታት','ትግርኛን'], meta: { audio: '../audio/listening/tigrinya.mp3' } }
->>>>>>> Stashed changes
     ];
 
     // DOM elements
@@ -223,13 +201,8 @@
       resultCard.classList.add('d-none');
       resultCard.classList.remove('celebrate');
       appInstance.restart();
-<<<<<<< Updated upstream
-    });
-  </script>
-=======
-    }); 
-  </script> 
->>>>>>> Stashed changes
+    }); -->
+  <!-- </script> -->
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -241,7 +214,7 @@
         <a href="../terms-of-use.html">Terms of Use</a>
       </div>
       <div class="footer-social" aria-label="Social media links">
-         <a href="https://www.youtube.com/@debre-xgie-haaglanden" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa fa-youtube-play" style="font-size:48px;color:red"></i></a>
+         <a href="https://www.youtube.com/@mesmerTigrinya?sub_confirmation=1" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa fa-youtube-play" style="font-size:48px;color:red"></i></a>
          <a href="https://whatsapp.com/channel/0029VbBDOZZ545uvePNY6Z0x" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa fa-whatsapp" style="font-size:48px;color:green"></i></a>
       </div>
       <div class="footer-copyright">
