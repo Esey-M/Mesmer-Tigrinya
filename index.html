@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mesmer Tigrinya — Learn Tigrinya</title>
+  <meta name="description" content="Free interactive Tigrinya language learning resources for learners of all ages. Learn with quizzes, stories, ebooks, and comprehensive educational materials.">
+  <title>Mesmer Tigrinya — Learn Tigrinya Language Online | Free Resources</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -28,9 +29,10 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">ቅድመ ገጽ</a></li>
           <li class="nav-item"><a class="nav-link" href="quizzes.html">ትምህርትታት</a></li>
-          <li class="nav-item"><a class="nav-link" href="stories.html">ዛንታታት</a></li>
+          <li class="nav-item"><a class="nav-link" href="stories.html">ሓበሬታ</a></li>
           <li class="nav-item"><a class="nav-link" href="parents.html">ንወለዲ</a></li>
           <li class="nav-item"><a class="nav-link" href="ebooks.html">መምሃሪ መጻሕፍቲ</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">ብዛዕባና</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">ርኸቡና</a></li>
         </ul>
       </div>
@@ -44,15 +46,17 @@
         <div class="row align-items-center g-4 hero-grid">
           <div class="col-lg-6">
             <h1 class="hero-heading">ብኣዘናጋዒ መንገዲ ትግርኛ ተመሃር!</h1>
+            <p class="lead mb-4">Free interactive resources to learn Tigrinya language for learners of all ages. Start your journey today with quizzes, stories, and comprehensive learning materials.</p>
             <div class="d-flex gap-2">
-              <a class="btn btn-primary" href="quizzes.html">ናብ ትምህርትታት ንኺድ</a>
+              <a class="btn btn-primary btn-lg" href="quizzes.html">ናብ ትምህርትታት ንኺድ</a>
+              <a class="btn btn-outline-primary btn-lg" href="about.html">ብዛዕባና</a>
             </div>
           </div>
-          <div class="col-lg-6 position-relative hero-art">
+          <div class="col-lg-6 position-relative hero-art d-flex align-items-center justify-content-center">
             <div class="bubble bubble-1"></div>
             <div class="bubble bubble-2"></div>
             <div class="bubble bubble-3"></div>
-            <img class="hero-illustration img-fluid rounded-4 shadow" src="images/hero-kids.png" alt="Kids learning happily" />
+            <div class="hero-tigrinya-text">ትግርኛ</div>
           </div>
         </div>
       </div>
@@ -63,38 +67,35 @@
     <!-- CATEGORIES -->
     <section class="categories reveal-up py-5">
       <div class="container">
-        <h2 class="section-title text-white">ትሕዝቶታት መርምር</h2>
+        <h2 class="section-title" style="color: var(--text);">ትሕዝቶታት መርምር / Learning Resources</h2>
+        <p class="text-white text-center mb-4">Comprehensive tools and materials to help you master Tigrinya at your own pace</p>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 category-grid">
           <div class="col">
             <a class="category-card d-block" href="quizzes.html">
               <div class="category-img">
-                <img src="images/play-quizess.png" alt="Colorful educational quiz cards and learning materials" />
+                <div class="category-placeholder">ትምህርትታት</div>
               </div>
-              <div class="category-label">ትምህርትታት</div>
             </a>
           </div>
           <div class="col">
             <a class="category-card d-block" href="stories.html">
               <div class="category-img">
-                <img src="images/zantatat.png" alt="Children reading colorful storybooks together" />
+                <div class="category-placeholder">ሓበሬታ</div>
               </div>
-              <div class="category-label">ዛንታታት</div>
             </a>
           </div>
           <div class="col">
             <a class="category-card d-block" href="/parents.html">
               <div class="category-img">
-                <img src="images/hagez-nweledi.png" alt="Happy family learning together with educational materials" />
+                <div class="category-placeholder">ሓገዝ ንወለዲ</div>
               </div>
-              <div class="category-label">ሓገዝ ንወለዲ</div>
             </a>
           </div>
           <div class="col">
             <a class="category-card d-block" href="/ebooks.html">
               <div class="category-img">
-                <img src="images/ebooks.png" alt="Colorful digital books and tablets for children's learning" />
+                <div class="category-placeholder">መጻሕፍቲ መምሃሪ ትግርኛ</div>
               </div>
-              <div class="category-label">መጻሕፍቲ መምሃሪ ትግርኛ</div>
             </a>
           </div>
         </div>
@@ -119,6 +120,7 @@
       </div>
       <div class="container text-center">
         <h2 class="section-title">ነቲ ናይ ትምህርቲ ግዜ ሰሓብን ኣዘናጋዕን ዝገብርዎ ነገራት</h2>
+        <p class="text-center text-muted mb-4">Everything you need to learn Tigrinya effectively and enjoyably</p>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 feature-grid">
           <div class="col">
             <article class="feature-card wiggle h-100">
@@ -148,29 +150,29 @@
     <!-- Bootstrap Carousel -->
     <section class="carousel-section reveal-up py-5">
       <div class="container">
-        <p class="section-sub">Screens show Eritrean kids using the app (mock images).</p>
-        <div id="kidsCarousel" class="carousel slide shadow rounded-4 overflow-hidden" data-bs-ride="carousel">
+        <p class="section-sub">Learn Tigrinya with our interactive platform - accessible on all devices</p>
+        <div id="mainCarousel" class="carousel slide shadow rounded-4 overflow-hidden" data-bs-ride="carousel">
           <div class="carousel-indicators">
-            <button type="button" data-bs-target="#kidsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#kidsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#kidsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="images/Three_happy_Eritrean_children.png" class="d-block w-100" alt="Kids smiling with tablet">
+              <img src="images/ዝርርብ-ትግርኛ.png" class="d-block w-100" alt="Learn Tigrinya language">
             </div>
             <div class="carousel-item">
-              <img src="images/Three_happy_Eritrean_children.png" class="d-block w-100" alt="Child learning letters">
+              <img src="images/ዝርርብ-ትግርኛ.png" class="d-block w-100" alt="Tigrinya alphabet learning">
             </div>
             <div class="carousel-item">
-              <img src="images/Three_happy_Eritrean_children.png" class="d-block w-100" alt="Friends reading together">
+              <img src="images/ዝርርብ-ትግርኛ.png" class="d-block w-100" alt="Reading Tigrinya stories">
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#kidsCarousel" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#kidsCarousel" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -183,6 +185,7 @@
     <div class="container footer-inner">
       <div class="footer-top"></div>
       <div class="footer-links">
+        <a href="about.html">About Us</a>
         <a href="contact.html">Contact Us</a>
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="terms-of-use.html">Terms of Use</a>

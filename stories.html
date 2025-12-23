@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ዛንታታት - Tigrinya Stories — መስመር ትግርኛ</title>
+  <meta name="description" content="Tigrinya language learning blog - tips, guides, and resources for learners of all levels. Learn about Tigrinya culture, grammar, and effective learning strategies.">
+  <title>Blog — Tigrinya Learning Resources | መስመር ትግርኛ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -14,122 +15,82 @@
         async src="//gc.zgo.at/count.js"></script>
   <style>
     .stories-hero {
-      background: linear-gradient(135deg, var(--surface) 0%, #fde9d5 50%, #fff5e6 100%);
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f5 100%);
       padding: 4rem 0;
       text-align: center;
     }
     
-    .video-card {
+    .blog-card {
       background: white;
       border-radius: 20px;
-      overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      margin-bottom: 2rem;
-    }
-    
-    .video-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    }
-    
-    .video-thumbnail {
-      position: relative;
-      width: 100%;
-      height: 300px;
-      background: #f8f9fa;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    
-    .video-thumbnail img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .play-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 60px;
-      height: 60px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      color: #e74c3c;
-      cursor: pointer;
+      margin: 2rem 0;
       transition: all 0.3s ease;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      border: 1px solid #dee2e6;
     }
     
-    .play-button:hover {
-      background: white;
-      transform: translate(-50%, -50%) scale(1.1);
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      text-decoration: none;
+      color: inherit;
+      border-color: var(--brand-secondary);
     }
     
-    .video-content {
-      padding: 1.5rem;
+    .blog-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
     }
     
-    .video-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 0.75rem;
-      line-height: 1.4;
+    .blog-content {
+      padding: 2rem;
     }
     
-    .video-description {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-    
-    .video-meta {
+    .blog-meta {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-    }
-    
-    .video-duration {
-      background: rgba(0,0,0,0.7);
-      color: white;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-    }
-    
-    .modal-video {
-      width: 100%;
-      height: 450px;
-      border: none;
-      border-radius: 10px;
-    }
-    
-    @media (min-width: 768px) {
-      .modal-video {
-        height: 600px;
-      }
-    }
-    
-    .story-category {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      display: inline-block;
       margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+    
+    .blog-tag {
+      background: var(--brand-secondary);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .blog-excerpt {
+      color: #6c757d;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    
+    .read-more {
+      color: var(--brand);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .read-more:hover {
+      color: var(--brand-secondary);
     }
   </style>
 </head>
@@ -148,111 +109,83 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="index.html">ቅድመ ገጽ</a></li>
           <li class="nav-item"><a class="nav-link" href="quizzes.html">ትምህርትታት</a></li>
-          <li class="nav-item"><a class="nav-link active" href="stories.html" aria-current="page">ዛንታታት</a></li>
+          <li class="nav-item"><a class="nav-link active" href="stories.html" aria-current="page">ሓበሬታ</a></li>
           <li class="nav-item"><a class="nav-link" href="parents.html">ንወለዲ</a></li>
           <li class="nav-item"><a class="nav-link" href="ebooks.html">መምሃሪ መጻሕፍቲ</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">ብዛዕባና</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">ርኸቡና</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Stories Hero -->
+  <!-- Blog Hero -->
   <section class="stories-hero">
     <div class="container">
-      <h1 class="display-4 fw-bold mb-3">📚 ቪድዮታት ትግርኛ</h1>
+      <h1 class="display-4 fw-bold mb-3">📝 ብሎግ / Blog</h1>
+      <p class="fs-5 text-muted">Tips, guides, and resources for learning Tigrinya</p>
     </div>
   </section>
 
   <main>
     <div class="container py-5">
+      <!-- Blog Posts Grid -->
       <div class="row">
-        <!-- Story 1 -->
-        <div class="col-lg-6 mb-4">
-          <div class="video-card">
-            <div class="video-thumbnail">
-              <img src="https://img.youtube.com/vi/5R7RWBgghnc/maxresdefault.jpg" alt="Tigrinya Alphabet Story">
-              <div class="play-button" data-bs-toggle="modal" data-bs-target="#storyModal1">
-                <i class="fa fa-play"></i>
+        <div class="col-lg-4 col-md-6">
+          <a href="blog/getting-started.html" class="blog-card">
+            <div class="blog-image">
+              <span>🚀</span>
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="blog-tag">ምብጋስ</span>
+                <span>20 መስከረም, 2025</span>
               </div>
+              <h4>ምጅማር ትምህርቲ ትግርኛ</h4>
+              <p class="blog-excerpt">ደቕኹም ቋንቋ ትግርኛ ምምሃር ንምጅማር ንምሕጋዝ ነዞም መሰረታውያን ዝኾኑ ነጥብታት ኣካይዱ። ካብ ምፍላይ ቅኑዕ ናይ ትምህርቲ ቦታ ክሳብ ምቅማጥ ግብራውያን ሸቶታት...</p>
+              <span class="read-more">ምሉእ ትሕዝቶ <i class="fa fa-arrow-right"></i></span>
             </div>
-            <div class="video-content">
-              <div class="story-category"></div>
-              <h3 class="video-title"> </h3>
-              <p class="video-description">
-              </p>
-            </div>
-          </div>
+          </a>
         </div>
-
-        <!-- Story 2 -->
-        <div class="col-lg-6 mb-4">
-          <div class="video-card">
-            <div class="video-thumbnail">
-              <img src="https://img.youtube.com/vi/TR5vKNBKrfY/maxresdefault.jpg" alt="Tigrinya Alphabet Story">
-              <div class="play-button" data-bs-toggle="modal" data-bs-target="#storyModal2">
-                <i class="fa fa-play"></i>
+        
+        <div class="col-lg-4 col-md-6">
+          <a href="blog/troubleshooting.html" class="blog-card">
+            <div class="blog-image">
+              <span>🔧</span>
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="blog-tag">ብድሆ</span>
+                <span>22 መስከረም 2025</span>
               </div>
+              <h4>ርኡያት ብድሆታትን መፍትሒኦምን</h4>
+              <p class="blog-excerpt">መብዛሕትኡ ግዜ ተመሃሮ ኣብ ትግርኛ ምምሃር ኣብ ዝምህሩሉ እዋን ዝገጥሞም ብድሆታት ተመልከቱ። ካብ ምጽጋም ምድማጽ ቃላት ክሳብ ንልምምድ ምሕንጋድ...</p>
+              <span class="read-more">ምሉእ ትሕዝቶ <i class="fa fa-arrow-right"></i></span>
             </div>
-            <div class="video-content">
-              <div class="story-category"></div>
-              <h3 class="video-title"> </h3>
-              <p class="video-description">
-              </p>
-            </div>
-          </div>
+          </a>
         </div>
-
-        <!-- Story 3 -->
-        <div class="col-lg-6 mb-4">
-          <div class="video-card">
-            <div class="video-thumbnail">
-              <img src="https://img.youtube.com/vi/nIIjzD997xg/maxresdefault.jpg" alt="Tigrinya Alphabet Story">
-              <div class="play-button" data-bs-toggle="modal" data-bs-target="#storyModal3">
-                <i class="fa fa-play"></i>
+      </div>
+      
+      <!-- Quick Resources Section -->
+      <div class="row mt-5">
+        <div class="col-lg-12">
+          <div class="text-center">
+            <div class="row">
+              <div class="col-md-4">
+                <a href="quizzes.html" class="btn btn-primary btn-lg w-100 mb-3">
+                  <i class="fa fa-gamepad me-2"></i>እንዳተዛናጋዕኻ ምምሃር
+                </a>
               </div>
-            </div>
-            <div class="video-content">
-              <div class="story-category"></div>
-              <h3 class="video-title"> </h3>
-              <p class="video-description">
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Story 4 -->
-        <div class="col-lg-6 mb-4">
-          <div class="video-card">
-            <div class="video-thumbnail">
-              <img src="https://img.youtube.com/vi/UII3LqwmYJU/maxresdefault.jpg" alt="Tigrinya Alphabet Story">
-              <div class="play-button" data-bs-toggle="modal" data-bs-target="#storyModal4">
-                <i class="fa fa-play"></i>
+              <div class="col-md-4">
+                <a href="ebooks.html" class="btn btn-primary btn-lg w-100 mb-3">
+                  <i class="fa fa-book me-2"></i>ናጻ ኤሌክትሮኒካዊ መጻሕፍቲ
+                </a>
               </div>
-            </div>
-            <div class="video-content">
-              <div class="story-category"></div>
-              <h3 class="video-title"> </h3>
-              <p class="video-description">
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Story 5 -->
-        <div class="col-lg-6 mb-4">
-          <div class="video-card">
-            <div class="video-thumbnail">
-              <img src="https://img.youtube.com/vi/qhCMC_VBow8/maxresdefault.jpg" alt="Tigrinya Alphabet Story">
-              <div class="play-button" data-bs-toggle="modal" data-bs-target="#storyModal5">
-                <i class="fa fa-play"></i>
+              <div class="col-md-4">
+                <a href="contact.html" class="btn btn-primary btn-lg w-100 mb-3">
+                  <i class="fa fa-envelope me-2"></i>ሓገዝ
+                </a>
               </div>
-            </div>
-            <div class="video-content">
-              <div class="story-category"></div>
-              <h3 class="video-title"> </h3>
-              <p class="video-description">
-              </p>
             </div>
           </div>
         </div>
@@ -260,87 +193,12 @@
     </div>
   </main>
 
-  <!-- Video Modals -->
-  <!-- Modal 1 -->
-  <div class="modal fade" id="storyModal1" tabindex="-1" aria-labelledby="storyModal1Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="storyModal1Label">መዓርን ሃመማን</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <iframe class="modal-video" src="https://www.youtube.com/embed/5R7RWBgghnc" title="Tigrinya Alphabet Story" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 2 -->
-  <div class="modal fade" id="storyModal2" tabindex="-1" aria-labelledby="storyModal2Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="storyModal2Label">ፊደላት በ፡ ሰ፡ ሸ</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <iframe class="modal-video" src="https://www.youtube.com/embed/TR5vKNBKrfY" title="Numbers in Tigrinya" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 3 -->
-  <div class="modal fade" id="storyModal3" tabindex="-1" aria-labelledby="storyModal3Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="storyModal3Label">ወኻርያን ኻኽን</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <iframe class="modal-video" src="https://www.youtube.com/embed/nIIjzD997xg" title="Our Family in Tigrinya" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 4 -->
-  <div class="modal fade" id="storyModal4" tabindex="-1" aria-labelledby="storyModal4Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="storyModal4Label">ሕቶን መልስን</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <iframe class="modal-video" src="https://www.youtube.com/embed/UII3LqwmYJU" title="Colors in Tigrinya" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 5 -->
-  <div class="modal fade" id="storyModal5" tabindex="-1" aria-labelledby="storyModal5Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="storyModal5Label">ኣርባዕተ ኣሕዋት</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <iframe class="modal-video" src="https://www.youtube.com/embed/qhCMC_VBow8" title="Animals in Tigrinya" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-top"></div>
       <div class="footer-links">
+        <a href="about.html">About Us</a>
         <a href="contact.html">Contact Us</a>
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="terms-of-use.html">Terms of Use</a>
